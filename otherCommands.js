@@ -1,7 +1,8 @@
+import axios from 'axios'
 export const otherCommands = {
     async biteballs(ctx) {
+        const username = ctx.message.from.first_name
         try {
-            const username = ctx.message.from.first_name
             const insult = await axios.get('https://insult.mattbas.org/api/insult')
         
             let insult_display = insult.data.toLowerCase()
