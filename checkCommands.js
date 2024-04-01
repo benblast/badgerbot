@@ -135,7 +135,7 @@ export const checkCommands = {
         }
     },
     async checkrosslevel(ctx) {
-        const username = ctx.message.from.first_name
+        const username = ctx.message.from.username
         if (username === "angrymachines") {
             await ctx.reply(`holy fucking shit its ross`, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
         } else {
