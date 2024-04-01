@@ -7,6 +7,28 @@ dotenv.config();
 
 const bot = new Telegraf(process.env.token)
 
+bot.use((ctx, next) => {
+    const messageText = ctx.message.text;
+    if (!/^\/\w+/.test(messageText)) {
+        // If the message does not start with "/", it's not a command
+        // Skip logging and move to the next middleware or handler
+        return next();
+    }
+
+    const commandText = messageText.slice(1);
+
+    // compare the commandText with the keys of the commands object
+    if (Object.keys(checkCommands).includes(commandText) || Object.keys(otherCommands).includes(commandText)) {
+        const username = ctx.message.from.username
+        const command = ctx.update.message.text
+        const time = new Date().toLocaleString()
+        const channelName = ctx.chat.username || ctx.chat.title
+        console.log(`Username: ${username}, Command: ${command}, Channel: ${channelName}, Time: ${time}`)
+    }
+
+    return next()
+})
+
 Object.entries(checkCommands).forEach(([commandName, commandFunction]) => {
     bot.command(commandName, commandFunction);
 });

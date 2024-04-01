@@ -36,13 +36,16 @@ export const checkCommands = {
     },
     async checkretardlevel(ctx) {
         // Get the username of the user who triggered the command
-        const username = ctx.message.from.first_name;
+        const username = ctx.message.from.username;
 
         // Generate a random clown level (0-100)
         let clownLevel = getRandomInt()
 
         const customMessages = {
             'angrymachines': `is cool!`,
+            'oldmanwithcoin': `is like ${clownLevel + 44}% retard!`,
+            'Dennis_56': `is like ${clownLevel + 444}% retard!`
+
         };
 
         const val2 = (100 - clownLevel)
@@ -50,10 +53,10 @@ export const checkCommands = {
         // Check if the user triggering the command has a custom message
         if (username in customMessages) {
         // Send the custom message
-            ctx.reply(`@${username} ${customMessages[username]}`, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id});
+            ctx.reply(`@${ctx.message.from.first_name} ${customMessages[username]}`, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id});
         } else {
             // Send the default message
-            ctx.reply(`@${username} is like ${clownLevel}% retarded.`, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id});
+            ctx.reply(`@${ctx.message.from.first_name} is like ${clownLevel}% retarded.`, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id});
         }
     },
     async checkcoollevel(ctx) {
@@ -79,22 +82,22 @@ export const checkCommands = {
     },
     async checkboblevel(ctx) {
         // Get the username of the user who triggered the command
-        const username = ctx.message.from.first_name;
+        const username = ctx.message.from.username;
 
         // Generate a random clown level (0-100)
         let clownLevel = getRandomInt()
         const val2 = (100 - clownLevel)
 
         const customMessages = {
-        'Bobbiesdobbies': `is 50% Bob and his 50% Dobbs!`,
+            'Bobbiesdobbies': `is 50% Bob and his 50% Dobbs!`,
         };
         // Check if the user triggering the command has a custom message
         if (username in customMessages) {
             // Send the custom message
-            ctx.reply(`@${username} ${customMessages[username]}`, {parse_mode: "HTML"});
+            ctx.reply(`@${ctx.message.from.first_name} ${customMessages[username]}`, {parse_mode: "HTML"});
         } else {
             // Send the default message
-            ctx.reply(`@${username} is like ${clownLevel}% Bob and ${val2}% Dobbs!`, {parse_mode: "HTML"});
+            ctx.reply(`@${ctx.message.from.first_name} is like ${clownLevel}% Bob and ${val2}% Dobbs!`, {parse_mode: "HTML"});
         }
     },
     checkclownlevel(ctx) {
