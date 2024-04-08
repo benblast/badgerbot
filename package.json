@@ -1,0 +1,21 @@
+{
+  "name": "hoba_meme_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "axios": "^1.6.7",
+    "canvas": "^2.11.2",
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.0.3",
+    "telegraf": "^4.15.3"
+  }
+}

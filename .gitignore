@@ -1,0 +1,24 @@
+# Node.js
+node_modules/
+unc/
+npm-debug.log
+yarn-error.log
+ai_test.js
+ai_test.py
+
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# IDE/Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
