@@ -14,7 +14,7 @@ export const checkCommands = {
         ctx.reply(`@${username} is ${percent}% Gay ${profession}!`, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id});
     },
     async checksquirrellevel(ctx) {
-        const username = ctx.message.from.first_name;
+        const username = ctx.message.from.username;
 
         // generate a random clown level (0-100)
         const clownLevel = getRandomInt();
@@ -45,7 +45,6 @@ export const checkCommands = {
             'angrymachines': `is cool!`,
             'oldmanwithcoin': `is like ${clownLevel + 44}% retard!`,
             'Dennis_56': `is like ${clownLevel + 444}% retard!`
-
         };
 
         const val2 = (100 - clownLevel)
@@ -61,7 +60,7 @@ export const checkCommands = {
     },
     async checkcoollevel(ctx) {
         // Get the username of the user who triggered the command
-        const username = ctx.message.from.first_name;
+        const username = ctx.message.from.username;
 
         // Generate a random clown level (0-100)
         let clownLevel = getRandomInt()
@@ -102,7 +101,7 @@ export const checkCommands = {
     },
     checkclownlevel(ctx) {
         // Get the username of the user who triggered the command
-        const username = ctx.message.from.first_name;
+        const username = ctx.message.from.username;
 
         // Generate a random clown level (0-100)
         const clownLevel = getRandomInt()
@@ -143,7 +142,7 @@ export const checkCommands = {
         }
     },
     async checksnakelevel(ctx) {
-        const username = ctx.message.from.first_name
+        const username = ctx.message.from.username
         await ctx.reply(`ssssssstfu`, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
     },
     async checkcarelevel(ctx) {
@@ -155,5 +154,21 @@ export const checkCommands = {
         let howGay = getRandomInt()
         let badger = (100 - howGay)
         await ctx.reply(`@${username} is ${badger}% badger! And ${howGay}% gay!`, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id});
+    },
+    async checkmanlevel(ctx) {
+        const username = ctx.from.username
+        let random = Math.floor(Math.random() * 10)
+        await ctx.replyWithPhoto({ source: `manlevel_assets/${random}.jpg` }, {caption: `${ctx.from.first_name} is this kind of man ^`,reply_to_message_id: ctx.message.message_id})
+    },
+    async checklibtardlevel(ctx) {
+        const username = ctx.message.from.username
+        const name = ctx.message.from.first_name
+        const clownLevel = getRandomInt()
+        const clownLevel2 = getRandomInt() + 166
+        if (username === "KatieCans" || username == "oldmanwithcoin") {
+            await ctx.reply(`${name} is ${clownLevel2}% libtard - Biden voter confirmed`, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        } else {
+            await ctx.reply(`${name} is like ${clownLevel}% libtard`, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        }
     }
 }

@@ -1,0 +1,7 @@
+# Create a new venv environment
+python3 -m venv .venv 
+
+# Activate the environment
+source .venv/bin/activate
+
+pip3 install llama-cpp-python
