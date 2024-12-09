@@ -1,0 +1,200 @@
+[
+  {
+    "name": "a berserker potion",
+    "bonusDamage": 20,
+    "bonusXp": 0,
+    "bonusCritChance": 15,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": false,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>swigs the potion that tastes mysteriously like piss... their eyes turn red as they let out a terrifying roar!</i>",
+      "+20dmg and +15% bonus crit chance on the next fight/monsterhunt!"
+    ],
+    "descr": "<i>this potion might taste like the piss of a person who is severely dehydrated...</i>\n\n<b>- 20 bonus damage and +15% critical chance for your next monsterhunt or bar brawl</b>"
+  },
+  {
+    "name": "the blood of Passport",
+    "bonusDamage": 0,
+    "bonusXp": 0,
+    "bonusCritChance": 0,
+    "bonusDailyXp": true,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": false,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>pours passports special needs blood into a sippy cup and enjoys it thoroughly!</i>",
+      "DOUBLE XP next time you claim /dailyxp!"
+    ],
+    "descr": "<i>ahhh... there is nothing like the taste of the blood of Passport</i>\n\n<b>- you gain double XP next time you do /dailyxp</b>"
+  },
+  {
+    "name": "a fresh pair of undies",
+    "bonusDamage": 0,
+    "bonusXp": 150,
+    "bonusCritChance": 0,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": false,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>slides out of their damp shit-caked undies and puts on a brand new pair!</i>",
+      "ahh such a quality of life upgrade - instant +150XP!"
+    ],
+    "descr": "<i>lets be real and appreciate how great unsoiled underwear is...</i>\n\n<b>- you instantly gain +100xp</b>"
+  },
+  {
+    "name": "some nookie",
+    "bonusDamage": 0,
+    "bonusXp": 69,
+    "bonusCritChance": 0,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": false,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>walks down the street and happens upon some nookie!</i>",
+      "instant +69XP - nice."
+    ],
+    "descr": "<i>oh, you dirty badger! you got your paws on some nookie from a lucky someone!</i>\n\n<b>- you instantly gain +69xp</b>"
+  },
+  {
+    "name": "15mins of fame",
+    "bonusDamage": 0,
+    "bonusXp": 50,
+    "bonusCritChance": 0,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": false,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>got their time in the limelight but now it's over... exhilirating while it lasted but now that feeling is replaced by emptiness and disillusionment</i>",
+      "instant +50XP at least so you got that going for ya"
+    ],
+    "descr": "<i>for a limited time you thought you had it all, that you were doing something right with your life... but then someone pulled the red rug from underneath your feet</i>\n\n<b>- you instantly gain +50xp</b>"
+  },
+  {
+    "name": "a decent psyop",
+    "bonusDamage": 0,
+    "bonusXp": 0,
+    "bonusCritChance": 0,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": true,
+    "curse": {
+      "dispelConsumable": true,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>performs a not-too-shabby psyop on</i>",
+      "got all of their active consumable items removed!!"
+    ],
+    "descr": "<i>this psyop is a decent one because it works for like 5minutes - but sometimes that is all the time you need in the world to get what you want!</i>\n\n<b>- you dispel all active effects on target user (for example berserker potion or blood of Passport)</b>"
+  },
+  {
+    "name": "an m3 bradley battletank",
+    "bonusDamage": 25,
+    "bonusXp": 0,
+    "bonusCritChance": 0,
+    "bonusDailyXp": false,
+    "invulnerable": true,
+    "invisible": false,
+    "isCurse": false,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>gathers his crew of strong 19 year old marines and hops in a FUCKING ARMORED TANK, BOIII WTF</i>",
+      "they are <b>INVULNERABLE</b> and gets +25dmg for the next monsterhunt/fight"
+    ],
+    "descr": "<i>it's a frickin armor plated battletank with a fat cannon and a crew of battle hardened marines!</i>\n\n<b>- frickin' invulnerability & you get +25damage for next fight/monsterhunt</b>"
+  },
+  {
+    "name": "a supersoaker filled with piss",
+    "bonusDamage": 0,
+    "bonusXp": 0,
+    "bonusCritChance": 0,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": true,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 150
+    },
+    "effect": [
+      "<i>pumps their super soaker and shoots a lukewarm stream of deep yellow piss all over</i>",
+      "is fuckin drenched and gets an INSTANT -150XP!"
+    ],
+    "descr": "<i>pump it up & aim... to give a special someone a golden shower</i>\n\n<b>- target user instantly lose -150xp</b>"
+  },
+  {
+    "name": "withdrawals from hard drugs",
+    "bonusDamage": 0,
+    "bonusXp": 0,
+    "bonusCritChance": 0,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": true,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 20,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>hides the drugs in a super secret location and inducing withdrawals in</i>",
+      "gets -20dmg for their next fight/monsterhunt!"
+    ],
+    "descr": "<i>stash the hard drugs somewhere where they cant find em to induce serious, potentially lifethreatening withdrawals!</i>\n\n<b>- target user gets -20damage for next fight/monsterhunt</b>"
+  }
+]

@@ -101,18 +101,18 @@ export const memeBot = {
     async memeReply(ctx) {
         try {
             if (ctx.message.text.trim() === '/meme' && ctx.message.reply_to_message && ctx.message.reply_to_message.photo) {
-                // Get the largest available photo size
+                // get the largest available photo size
                 const photo = ctx.message.reply_to_message.photo[ctx.message.reply_to_message.photo.length - 1];
                 
-                // Extract the file_id of the photo
-                const fileId = photo.file_id;
+                // extract the file_id of the photo
+                const fileId = photo.file_id
                 const downloadUrl = `https://api.telegram.org/bot${process.env.token}/getFile?file_id=${fileId}`
                 const res = await axios.get(downloadUrl)
                 const filePath = res.data.result.file_path
                 await downloadImage(filePath)
                 await mergeImages('downloaded_image.jpg', 'tv_logo.png')
                 await ctx.replyWithPhoto({ source: 'mergedOutput.png' }, {caption: `nice meme ${ctx.from.first_name}`,reply_to_message_id: ctx.message.message_id})
-                await cleanUp();
+                await cleanUp()
             }
     
             if(gameLogic.getGameTimer() != 0 && Date.now() - gameLogic.getGameTimer() >= 2*60*1000 && ctx.session.gameLive) {

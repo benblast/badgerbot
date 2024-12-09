@@ -1,0 +1,560 @@
+[
+  {
+    "name": "an iranian passport",
+    "diff": -25,
+    "attack": 1,
+    "xpReward": 25
+  },
+  {
+    "name": "an anemic lion",
+    "diff": -20,
+    "attack": 10,
+    "xpReward": 35
+  },
+  {
+    "name": "a serbian guy",
+    "diff": -20,
+    "attack": 10,
+    "xpReward": 30
+  },
+  {
+    "name": "a conspiracy theorist",
+    "diff": -20,
+    "attack": 20,
+    "xpReward": 35
+  },
+  {
+    "name": "the average crypto investor",
+    "diff": -20,
+    "attack": 15,
+    "xpReward": 35
+  },
+  {
+    "name": "a homeless bum",
+    "diff": -15,
+    "attack": 20,
+    "xpReward": 30
+  },
+  {
+    "name": "a genuine romanian gypsy",
+    "diff": -15,
+    "attack": 10,
+    "xpReward": 50
+  },
+  {
+    "name": "the average congressman",
+    "diff": -15,
+    "attack": 25,
+    "xpReward": 40
+  },
+  {
+    "name": "a white guy in the ghetto",
+    "diff": -15,
+    "attack": 20,
+    "xpReward": 50
+  },
+  {
+    "name": "an annoying konrad",
+    "diff": -10,
+    "attack": 10,
+    "xpReward": 35
+  },
+  {
+    "name": "a junior tournament in karate",
+    "diff": -10,
+    "attack": 10,
+    "xpReward": 35
+  },
+  {
+    "name": "another beer",
+    "diff": -10,
+    "attack": 20,
+    "xpReward": 45
+  },
+  {
+    "name": "a gym bro that skips leg day",
+    "diff": -10,
+    "attack": 40,
+    "xpReward": 60
+  },
+  {
+    "name": "the little things",
+    "diff": -10,
+    "attack": 30,
+    "xpReward": 60
+  },
+  {
+    "name": "an old man",
+    "diff": -5,
+    "attack": 25,
+    "xpReward": 50
+  },
+  {
+    "name": "a vape cloud that whispers government secrets",
+    "diff": -5,
+    "attack": 50,
+    "xpReward": 40
+  },
+  {
+    "name": "a server timeout",
+    "diff": -5,
+    "attack": 10,
+    "xpReward": 40
+  },
+  {
+    "name": "the entire state of Ohio",
+    "diff": -5,
+    "attack": 50,
+    "xpReward": 100
+  },
+  {
+    "name": "a lizard person pretending to be a dentist",
+    "diff": -5,
+    "attack": 55,
+    "xpReward": 75
+  },
+  {
+    "name": "a conspiracy theory written in crayon",
+    "diff": -5,
+    "attack": 10,
+    "xpReward": 30
+  },
+  {
+    "name": "an eldritch being named Kevin",
+    "diff": -5,
+    "attack": 30,
+    "xpReward": 40
+  },
+  {
+    "name": "a badger with a PhD in psyops",
+    "diff": -5,
+    "attack": 60,
+    "xpReward": 60
+  },
+  {
+    "name": "a bald eagle",
+    "diff": 0,
+    "attack": 50,
+    "xpReward": 50
+  },
+  {
+    "name": "a telegram spam bot",
+    "diff": 0,
+    "attack": 25,
+    "xpReward": 25
+  },
+  {
+    "name": "a dinner guest",
+    "diff": 0,
+    "attack": 15,
+    "xpReward": 50
+  },
+  {
+    "name": "the concept of linear time",
+    "diff": 0,
+    "attack": 20,
+    "xpReward": 35
+  },
+  {
+    "name": "a dude who thinks he’s a plate of spaghetti",
+    "diff": 0,
+    "attack": 25,
+    "xpReward": 75
+  },
+  {
+    "name": "a pit viper",
+    "diff": 0,
+    "attack": 30,
+    "xpReward": 30
+  },
+  {
+    "name": "a circumcized man",
+    "diff": 0,
+    "attack": 30,
+    "xpReward": 30
+  },
+  {
+    "name": "existential dread",
+    "diff": 0,
+    "attack": 50,
+    "xpReward": 30
+  },
+  {
+    "name": "a roided out garden gnome",
+    "diff": 0,
+    "attack": 30,
+    "xpReward": 30
+  },
+  {
+    "name": "a beachgoer",
+    "diff": 5,
+    "attack": 15,
+    "xpReward": 35
+  },
+  {
+    "name": "a libertarian fundamentalist",
+    "diff": 5,
+    "attack": 25,
+    "xpReward": 45
+  },
+  {
+    "name": "a trustfund kid",
+    "diff": 5,
+    "attack": 25,
+    "xpReward": 45
+  },
+  {
+    "name": "a whiskey enthusiast",
+    "diff": 5,
+    "attack": 75,
+    "xpReward": 45
+  },
+  {
+    "name": "an africanized bee",
+    "diff": 5,
+    "attack": 75,
+    "xpReward": 45
+  },
+  {
+    "name": "an anime pfp",
+    "diff": 5,
+    "attack": 85,
+    "xpReward": 100
+  },
+  {
+    "name": "the cost of living",
+    "diff": 5,
+    "attack": 85,
+    "xpReward": 100
+  },
+  {
+    "name": "a radioactive yoga instructor",
+    "diff": 5,
+    "attack": 50,
+    "xpReward": 50
+  },
+  {
+    "name": "an asian murder hornet",
+    "diff": 5,
+    "attack": 110,
+    "xpReward": 100
+  },
+  {
+    "name": "a wisconsinite",
+    "diff": 5,
+    "attack": 35,
+    "xpReward": 55
+  },
+  {
+    "name": "XP Lovecraft",
+    "diff": 5,
+    "attack": 35,
+    "xpReward": 300
+  },
+  {
+    "name": "a palestine protester",
+    "diff": 5,
+    "attack": 35,
+    "xpReward": 107
+  },
+  {
+    "name": "a cursed Furby from 1998",
+    "diff": 5,
+    "attack": 75,
+    "xpReward": 125
+  },
+  {
+    "name": "their desire to continue living",
+    "diff": 10,
+    "attack": 250,
+    "xpReward": 250
+  },
+  {
+    "name": "the last brain cell at 2 a.m.",
+    "diff": 10,
+    "attack": 100,
+    "xpReward": 150
+  },
+  {
+    "name": "a pool of AIDS",
+    "diff": 10,
+    "attack": 250,
+    "xpReward": 80
+  },
+  {
+    "name": "the bartender",
+    "diff": 10,
+    "attack": 120,
+    "xpReward": 80
+  },
+  {
+    "name": "a paid shill",
+    "diff": 10,
+    "attack": 80,
+    "xpReward": 180
+  },
+  {
+    "name": "the clerk at Publix",
+    "diff": 10,
+    "attack": 125,
+    "xpReward": 125
+  },
+  {
+    "name": "an elon musk impersonator",
+    "diff": 10,
+    "attack": 150,
+    "xpReward": 250
+  },
+  {
+    "name": "chodepunk ze german",
+    "diff": 10,
+    "attack": 150,
+    "xpReward": 250
+  },
+  {
+    "name": "a Swiss man /w warhammer 40k figurines",
+    "diff": 10,
+    "attack": 150,
+    "xpReward": 250
+  },
+  {
+    "name": "an important investor",
+    "diff": 10,
+    "attack": 150,
+    "xpReward": 10
+  },
+  {
+    "name": "alcoholism",
+    "diff": 10,
+    "attack": 200,
+    "xpReward": 250
+  },
+  {
+    "name": "their closeted desires",
+    "diff": 10,
+    "attack": 125,
+    "xpReward": 75
+  },
+  {
+    "name": "the Spanish Inquisition",
+    "diff": 10,
+    "attack": 100,
+    "xpReward": 150
+  },
+  {
+    "name": "the nation of Islam",
+    "diff": 10,
+    "attack": 125,
+    "xpReward": 175
+  },
+  {
+    "name": "a mcdonalds line cook",
+    "diff": 10,
+    "attack": 100,
+    "xpReward": 100
+  },
+  {
+    "name": "a regular e-girl",
+    "diff": 15,
+    "attack": 75,
+    "xpReward": 120
+  },
+  {
+    "name": "the nigerians in their DMs",
+    "diff": 15,
+    "attack": 250,
+    "xpReward": 150
+  },
+  {
+    "name": "the housing market",
+    "diff": 15,
+    "attack": 250,
+    "xpReward": 250
+  },
+  {
+    "name": "a code runtime exception",
+    "diff": 15,
+    "attack": 150,
+    "xpReward": 200
+  },
+  {
+    "name": "the law of gravity",
+    "diff": 15,
+    "attack": 250,
+    "xpReward": 25
+  },
+  {
+    "name": "inflation",
+    "diff": 15,
+    "attack": 150,
+    "xpReward": 250
+  },
+  {
+    "name": "a suicidal thought",
+    "diff": 15,
+    "attack": 150,
+    "xpReward": 50
+  },
+  {
+    "name": "the nation of Germany in 1939",
+    "diff": 15,
+    "attack": 88,
+    "xpReward": 88
+  },
+  {
+    "name": "a short bus chauffeur",
+    "diff": 15,
+    "attack": 25,
+    "xpReward": 80
+  },
+  {
+    "name": "Gary Coleman",
+    "diff": 15,
+    "attack": 25,
+    "xpReward": 80
+  },
+  {
+    "name": "a big bosom lesbian",
+    "diff": 15,
+    "attack": 50,
+    "xpReward": 80
+  },
+  {
+    "name": "the bouncer",
+    "diff": 15,
+    "attack": 225,
+    "xpReward": 150
+  },
+  {
+    "name": "the urge to pee",
+    "diff": 15,
+    "attack": 25,
+    "xpReward": 25
+  },
+  {
+    "name": "cyberbullies",
+    "diff": 15,
+    "attack": 25,
+    "xpReward": 250
+  },
+  {
+    "name": "Keanu Reeves",
+    "diff": 15,
+    "attack": 50,
+    "xpReward": 75
+  },
+  {
+    "name": "a netflix standup comedian",
+    "diff": 15,
+    "attack": 50,
+    "xpReward": 175
+  },
+  {
+    "name": "a tinfoil hat with legs",
+    "diff": 15,
+    "attack": 200,
+    "xpReward": 300
+  },
+  {
+    "name": "a pumpfun user",
+    "diff": 20,
+    "attack": 25,
+    "xpReward": 75
+  },
+  {
+    "name": "a suspiciously large wooden badger",
+    "diff": 20,
+    "attack": 200,
+    "xpReward": 300
+  },
+  {
+    "name": "Joseph Stalin",
+    "diff": 20,
+    "attack": 225,
+    "xpReward": 375
+  },
+  {
+    "name": "their own autism",
+    "diff": 20,
+    "attack": 225,
+    "xpReward": 150
+  },
+  {
+    "name": "a crazy vampire bitch",
+    "diff": 20,
+    "attack": 225,
+    "xpReward": 300
+  },
+  {
+    "name": "Ross",
+    "diff": 20,
+    "attack": 15,
+    "xpReward": 75
+  },
+  {
+    "name": "a mutant poodle with an attitude",
+    "diff": 20,
+    "attack": 150,
+    "xpReward": 250
+  },
+  {
+    "name": "a temptation to do illegal drugs",
+    "diff": 25,
+    "attack": 500,
+    "xpReward": 250
+  },
+  {
+    "name": "an uncircumcized man",
+    "diff": 25,
+    "attack": 50,
+    "xpReward": 150
+  },
+  {
+    "name": "the bostwikinat0r",
+    "diff": 25,
+    "attack": 210,
+    "xpReward": 250
+  },
+  {
+    "name": "Gary Gensler",
+    "diff": 25,
+    "attack": 111,
+    "xpReward": 250
+  },
+  {
+    "name": "one of his hoes",
+    "diff": 30,
+    "attack": 300,
+    "xpReward": 50
+  },
+  {
+    "name": "a cosmic dental floss tycoon",
+    "diff": 30,
+    "attack": 200,
+    "xpReward": 400
+  },
+  {
+    "name": "that annoying neighbor",
+    "diff": 30,
+    "attack": 100,
+    "xpReward": 250
+  },
+  {
+    "name": "jared from subway",
+    "diff": 35,
+    "attack": 350,
+    "xpReward": 500
+  },
+  {
+    "name": "The System",
+    "diff": 40,
+    "attack": 500,
+    "xpReward": 500
+  },
+  {
+    "name": "the concept of free will",
+    "diff": 50,
+    "attack": 500,
+    "xpReward": 600
+  }
+]

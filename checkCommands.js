@@ -170,5 +170,61 @@ export const checkCommands = {
         } else {
             await ctx.reply(`${name} is like ${clownLevel}% libtard`, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
         }
+    },
+    async checkautismlevel(ctx) {
+        const username = ctx.message.from.username
+        const name = ctx.message.from.first_name
+        const clownLevel = getRandomInt()
+        let theMessage = `${name} is like ${clownLevel}% autistic. `
+        if (clownLevel > 90) {
+            theMessage += "Maximum Strength Furbee Collector Energy!"
+            await ctx.reply(theMessage, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        } else if (clownLevel > 80) {
+            theMessage += `It's a nonverbal!`
+            await ctx.reply(theMessage, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        } else if (clownLevel > 60) {
+            theMessage += `Almost qualifies for government aid!`
+            await ctx.reply(theMessage, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        } else if (clownLevel > 40) {
+            theMessage += `Most people don't know that you are normal.`
+            await ctx.reply(theMessage, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        } else if (clownLevel > 20 ) {
+            theMessage += `Get back to work in your cubicle 9-5, ${name}.`
+            await ctx.reply(theMessage, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        } else if (clownLevel > 10) {
+            theMessage += `Impressive statline, broskiff. What the fuck are you doing in a Honey Badger themed crypto telegram, dawg?`
+            await ctx.reply(theMessage, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        } else if (clownLevel < 10) {
+            theMessage += `Welcome, esteemed investor. How can we convince you to purchase more $HOBA and become part of our team? J/K GTFO FAGGOT NWORD`
+            await ctx.reply(theMessage, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        }
+    },
+        async checkchromosomelevel(ctx) {
+        const username = ctx.message.from.username
+        const name = ctx.message.from.first_name
+        let clownLevel = Math.floor(Math.random() * (25 - 19 + 1)) + 19 //makes a number from 19 to 25
+        let theMessage = `I calculated that ${name} has ${clownLevel} chromosomes. `
+        if (clownLevel === 19) {
+            theMessage += "That's barely enough to breathe on your own. You don't know where you are, do you?"
+            await ctx.reply(theMessage, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        } else if (clownLevel === 20) {
+            theMessage += `DO YOU UNDERSTAND WHAT NUMBERS ARE? PURCHASE MORE $HOBA`
+            await ctx.reply(theMessage, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        } else if (clownLevel === 21) {
+            theMessage += `A classic chromo-bum. Collect some more and maybe you can skip the wheelchair.`
+            await ctx.reply(theMessage, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        } else if (clownLevel === 22) {
+            theMessage += `This is like... almost normal. But you're not, retard. Buy more $HOBA`
+            await ctx.reply(theMessage, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        } else if (clownLevel === 23 ) {
+            theMessage += `Get your normie ass out of here, ${name}.`
+            await ctx.reply(theMessage, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        } else if (clownLevel === 24) {
+            theMessage += `Congrats you have Down's syndrome. Meet all your best friends here in the $HOBA TG! Everyone has the same affliction.`
+            await ctx.reply(theMessage, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        } else if (clownLevel === 25) {
+            theMessage += `Double Down syndrome? Holy shit, mate. That means double government aid - which leaves you more room to purchase $HOBA.`
+            await ctx.reply(theMessage, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
+        }
     }
 }

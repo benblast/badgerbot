@@ -36,7 +36,7 @@ export const otherCommands = {
         const username = ctx.message.from.first_name
         try {
             const commandText = ctx.message.text.replace('/askbadger', '').trim();
-            if(commandText.length < 9) throw err
+            if(commandText.length < 9) return
             const aiResponse = await sendToApi(commandText, username)
 
 
