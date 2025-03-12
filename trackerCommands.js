@@ -12,13 +12,25 @@ async function calculateRemainingTime(timeSinceClaim) {
 }
 
 export const trackerCommands = {
+	async verify(ctx) {
+		try {
+			const userId = ctx.from.id
+			if(!userId) throw Error('no userid in verifywallet')
+			let user = await retardTracker.verifyWallet(ctx, userId)
+
+		} catch(e) {
+			console.log(e, 'some error during verifywallet')
+		}
+	},
 	async gameguide(ctx) {
 		try {
-			let message = "🦡<b>badgering retard rpg guide</b>🦡\n"
+			let message = `🦡<b>guide to the HARD "R"pg</b>🦡\n`
 			message += `<i>a retarded game built by retards for retards where you collect XP and juicy loot by chatting, tweeting and killing monsters in a radical text-based rpg</i>\n\n`
 			message += `⚔️ fight a random monster with <b>/monsterhunt</b>\n`
 			message += `🎒 collect loot and equip items via <b>/inventory</b>\n\n`
 			message += `⚠️ <i>be careful because you can lose xp too!</i>\n\n`
+			message += `🏰 <i>kill 3 monsters in a row to proceed to the </i><b>next DUNGEON LEVEL</b>\n`
+			message += `🦖 <i>if you feel well equipped, try /bossbattle this level's feared boss</i>\n\n`
 			message += `🔮 <i>come back every day to collect free xp using /dailyxp</i>\n`
 			message += `⚗️ <i>use /dailyloot to get a free consumable item every 24h!</i>\n\n`
 			message += `📜 <b>/gamecommands</b> to find all commands\n\n`
@@ -37,7 +49,16 @@ export const trackerCommands = {
 		try {
 			const userId = ctx.from.id
   			const user = await retardTracker.getXP(userId)
-  			const message = `📈 <b>${user.first_name}'s stats</b> 📈\n\n✨ <b>total XP:</b> ${user.xp}\n🏆 <b>level:</b> ${user.level}\n⭐ <b>dumpstars:</b> ${user.dumpstars}\n\ndaily xp combo: ${user.quests.dailyxp.combo}`
+  			let message = `📈 <b>${user.first_name}'s stats</b> 📈\n\n`
+  			message += `🏰- <i>you are on DUNGEON </i><b>LEVEL ${user.quests.monsterHunt.level+1}!</b>\n`
+  			message += `🎖️- <i>your KILLCOMBO HIGHSCORE: </i><b>${user.quests.monsterHunt.highscore}kills</b>!\n`
+  			message += `🗡️- <i>your KILLCOMBO:</i> <b>${user.quests.monsterHunt.combo}kills</b>!\n\n`
+  			message += `✨- <b>total XP:</b> ${user.xp}\n`
+  			message += `🏆- <b>level:</b> ${user.level}\n`
+  			message += `⭐- <b>dumpstars:</b> ${user.dumpstars}\n\n`
+  			message += `🔮- <i>daily xp combo</i>: <b>${user.quests.dailyxp.combo} days in a row</b>\n`
+  			message += `👹- <i>you've sent</i> <b>${user.messages ? user.messages : 'unknown'} messages</b> <i>in the $HOBA chat</i>`
+  			if(user.isVerified) message += `\n\n🟢- <b>VERIFIED BADGER</b>`
   			await ctx.reply(message, {reply_to_message_id: ctx.message.message_id, parse_mode:'HTML'})
 		} catch(e) {
 			console.log(e, 'some error during myxp execution')
@@ -59,7 +80,7 @@ export const trackerCommands = {
 					await ctx.reply(`🔮${user.first_name} just claimed their daily 50xp bonus!${doubleXpMessage}`, {reply_to_message_id: ctx.message.message_id,parse_mode: 'HTML'})									
 				}
 			} else {
-				console.log(user.first_name, 'dailyxp denied', userId)
+				console.log(ctx.from.first_name, 'dailyxp denied', userId)
 				let timeLeft = await calculateRemainingTime(user) //calculate time left (in this scenario user actually contains the timedifference)
 				let reply = `you can collect your free daily xp in ${timeLeft}`
 				return await ctx.reply(reply, { reply_to_message_id: ctx.message.message_id, parse_mode: 'HTML'})
@@ -185,8 +206,20 @@ export const trackerCommands = {
 		try{
 			const userId = ctx.from.id
 			if(!userId) return console.log('cant find userId for monsterhunt')
-			const user = await retardTracker.battleMonster(ctx, userId)
-			
+			const isBossBattle = false
+			const user = await retardTracker.battleMonster(ctx, userId, isBossBattle)
+			return			
+		} catch(e) {
+			console.log(e, 'some error during monsterhunt')
+		}
+	},
+	async bossbattle(ctx) {
+		try{
+			const userId = ctx.from.id
+			if(!userId) return console.log('cant find userId for monsterhunt')
+			const isBossBattle = true
+			const user = await retardTracker.battleMonster(ctx, userId, isBossBattle)
+			return			
 		} catch(e) {
 			console.log(e, 'some error during monsterhunt')
 		}
@@ -226,9 +259,19 @@ export const trackerCommands = {
 			const userId = ctx.from.id
 			if(!userId) return console.log('cant find userId for inventory')
 			const user = await retardTracker.getInv(ctx, userId)
-			if(user){console.log('successfully gave random weapon')}
+			if(user) console.log('successfully gave random weapon')
 		}catch(e) {
 			console.log(e, 'some error during inventory')
+		}
+	},
+	async shop(ctx) {
+		try {
+			const userId = ctx.from.id
+			if(!userId) return console.log('cant find userid in /shop')
+			const user = await retardTracker.theShop(ctx, userId)
+			if(user) console.log('successfully')
+		} catch(e) {
+			console.log(e, 'some error during /shop')
 		}
 	},
 	async equipweapon(ctx) {

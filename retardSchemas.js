@@ -33,7 +33,8 @@ export const retardSchemas = {
                     monsterHunt: {
                         timestamp: 0,
                         combo: 0,
-                        highscore: 0
+                        highscore: 0,
+                        level: 0
                     }
             }
         }

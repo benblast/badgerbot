@@ -13,6 +13,32 @@ async function calculateRemainingTime(timeSinceClaim) {
 }
 
 export const devCommands = {
+	async checkraffle(ctx) {
+		try {
+			const userId = ctx.from.id
+			console.log(userId, 'in raffle check')
+			if(adminUserIds.includes(userId)) console.log(userId, 'is in adminuserids')
+		    if (!adminUserIds.includes(userId)) return
+
+		    console.log(userId,'got past the guardclause for dumpstars')
+    	    const repliedMessage = ctx.message.reply_to_message
+    	    console.log(repliedMessage)
+		    if (!repliedMessage) {
+		        return ctx.reply('reply to a message');
+		    }
+		    const targetUserId = repliedMessage.from.id
+		    console.log(targetUserId, 'the id of the guy we want to check raffle')
+		    if(repliedMessage.from.is_bot) {
+		    	return ctx.reply('you cannot target bots.')
+		    }
+        	const user = await retardTracker.getUser(ctx, targetUserId)
+        	console.log(user, 'checking raffle for thi sfool')
+	        if(!user.hasOwnProperty('raffle')) return await ctx.reply('this guy is not entered into the raffle')
+        	if(user.hasOwnProperty('raffle')) return await ctx.reply(user.raffle)
+		} catch(e) {
+			console.log(e, 'smth with givedumpstar command')
+		}
+	},
 	async givedumpstar(ctx) {
 		try {
 			const userId = ctx.from.id

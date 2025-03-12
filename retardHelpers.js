@@ -6,6 +6,12 @@ import consumables from './consumables.json' assert { type: 'json' }
 import pkg from 'node-persist'
 
 export const retardHelpers = {
+	async getUser(userId) {
+		if(!userId) throw Error('no userId in getUser')
+		const user = await pkg.getItem(userId.toString())
+		if(!user) throw Error('no user found in getUser')
+		return user
+	},
 	calculateRemainingTime(timeSinceClaim) {
 		let remainingTimeInMs = 86400000 - timeSinceClaim
 	    // calculate hours, minutes, and seconds from milliseconds
@@ -87,15 +93,26 @@ export const retardHelpers = {
         const awardedWeapon = weapons[randomWeapon]
         return awardedWeapon
 	},
-	getRandomMonster(){
-        const randomNumber = randomInt(0, monsters.length)
-        const randomMonster = monsters[randomNumber]
+	getRandomMonster(level){
+        const randomNumber = randomInt(0, monsters[level].length)
+        const randomMonster = monsters[level][randomNumber]
         return randomMonster
 	},
 	getRandomConsumable(){
         const randomNumber = randomInt(0, consumables.length)
         const randomConsumable = consumables[randomNumber]
         return randomConsumable
+	},
+	getBossMonster(level){
+		console.log(level, 'LEVEL OF BOSS BEING PICKED')
+        const bossMonster = monsters['boss'][level]
+        return bossMonster
+	},
+	checkMonsterLevelUp(monsterHuntObject) {
+		if(monsterHuntObject.combo % 3 === 0) {
+			if(monsterHuntObject.level <= 5) return true // monsters cant level up past 5 right now
+		}
+		return false
 	},
 	removeAllConsumableCombatEffects(user) {
         // REMOVE ALL CONSUMABLE EFFECTS THAT ARE COMBAT RELATED

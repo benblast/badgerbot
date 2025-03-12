@@ -1,6 +1,9 @@
 import axios from 'axios'
 import {gameLogic} from './gameLogic.js'
 import he from 'he'
+import fs from 'fs'
+import path from 'path'
+import { retardTracker } from './retardTracker.js'
 
 async function sendToApi(q, username) {
     let response = await axios.post('http://localhost:5000/query', {
@@ -18,7 +21,74 @@ async function sendToApi(q, username) {
     return extractedText
 }
 
+
 export const otherCommands = {
+    async raffle(ctx) {
+        try {
+            if (!ctx) return;
+            const userId = ctx.from.id
+
+            // Get the message text
+            const message = ctx.message.text
+            return await ctx.reply('no active raffles atm')
+
+            // Extract the input after "/raffle" and trim it
+            const match = message.replace(/^\/raffle\s*/, '').trim();
+            let addy = '';
+
+            if (match) {
+                console.log(match);
+
+                // Validate the Ethereum address
+                if (!match.startsWith('0x') || match.length !== 42) {
+                    return await ctx.reply('that eth address is not correctly formatted');
+                }
+
+                // Assign the validated Ethereum address
+                addy = match;
+            } else {
+                return await ctx.reply('you need to format the ETH address correctly.');
+            }
+            let tehUser = await retardTracker.getUser(ctx, userId)
+
+            // Gather user information
+            const userInfo = {
+                id: ctx.from.id,
+                username: ctx.from.username || null,
+                first_name: ctx.from.first_name || null,
+                last_name: ctx.from.last_name || null,
+                raffleName: 'hoba bday raffle',
+                timestamp: new Date().toISOString(),
+                eth_address: addy,
+            };
+            if(tehUser.hasOwnProperty('raffle') && tehUser.raffle.raffleName === 'hoba bday raffle') return await ctx.reply(`🎟️ you already entered the ${userInfo.raffleName}!\ncheck back here to know the results soon.`)
+
+            // Update and save raffle data
+            await retardTracker.saveRaffleData(ctx.from.id, userInfo);
+
+            // Notify the user
+            await ctx.reply(
+                '🎟️ you entered the $hoba birthday raffle!\ncheck back in the channel soon and bitch at mods to know who won!'
+            );
+        } catch (e) {
+            console.log(e, 'some error in raffle')
+            return await ctx.reply('some error happened while processing your raffle shit')
+        }
+    },
+    async myentry(ctx) {
+        try {
+            if(!ctx) return console.log('no ctx in myentry')
+            const userId = ctx.from.id
+            let user = await retardTracker.getUser(ctx, userId)
+            if(!user.hasOwnProperty('raffle')) return await ctx.reply('you are not entered into a raffle')
+            if(user.hasOwnProperty('raffle')) {
+                let message = `🎟️🎲🤞${user.first_name} entered into the ${user.raffle.raffleName} at ${user.raffle.timestamp}`
+                return await ctx.reply(message)
+            }
+        } catch(e) {
+            console.log(e, 'some error during myentry')
+        }
+    },
     async biteballs(ctx) {
         const username = ctx.message.from.first_name
         try {
@@ -38,8 +108,6 @@ export const otherCommands = {
             const commandText = ctx.message.text.replace('/askbadger', '').trim();
             if(commandText.length < 9) return
             const aiResponse = await sendToApi(commandText, username)
-
-
             await ctx.replyWithMarkdown(aiResponse, {parse_mode: "HTML", reply_to_message_id: ctx.message.message_id})
         } catch(err) {
             console.log(err)

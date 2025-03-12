@@ -22,16 +22,16 @@ let lastUpdateId = 0;
 
 bot.use(session());
 bot.use((ctx, next) => {
-    const isPrivateChat = ctx.chat.type === 'private'
-    // deny if the user is not in the adminUserIds list
-    if (isPrivateChat && !adminUserIds.includes(ctx.from.id)) {
-        return console.log('tryna slide in')// deny interaction in private chats
-    }
+    // const isPrivateChat = ctx.chat.type === 'private'
+    // // deny if the user is not in the adminUserIds list
+    // if (isPrivateChat && !adminUserIds.includes(ctx.from.id)) {
+    //     return console.log('tryna slide in')// deny interaction in private chats
+    // }
 
-    // deny if the chat ID is in allowedChatIds groupchats
-    if (!isPrivateChat && !allowedChatIds.includes(ctx.chat.id)) {
-        return // deny interaction in groups/channels
-    }
+    // // deny if the chat ID is in allowedChatIds groupchats
+    // if (!isPrivateChat && !allowedChatIds.includes(ctx.chat.id)) {
+    //     return // deny interaction in groups/channels
+    // }
     try {
         const messageText = ctx.message?.text ?? "ctx.message.text is undefined";
         if (!/^\/\w+/.test(messageText)) {
@@ -163,34 +163,32 @@ bot.on('message', async (ctx) => {
 
 // NFT MINTING LISTENING AND SHIT
 // infura inshitstantiation
-const provider = new ethers.providers.InfuraProvider('mainnet', process.env.infura)
+// const provider = new ethers.providers.InfuraProvider('mainnet', process.env.infura)
 
-// abi formulations minimalistically brainpowered
-const contractABI = [
-    "event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)",
-    "function tokenURI(uint256 tokenId) external view returns (string memory)"
-]
+// // abi formulations minimalistically brainpowered
+// const contractABI = [
+//     "event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)",
+//     "function tokenURI(uint256 tokenId) external view returns (string memory)"
+// ]
 
-// contractual initializationz0r
-const contractAddress = "0xcf24db2b8bDA5E1c93fC4Fa045C78c2cD73Ec991"
-const nftContract = new ethers.Contract(contractAddress, contractABI, provider)
+// // contractual initializationz0r
+// const contractAddress = "0xcf24db2b8bDA5E1c93fC4Fa045C78c2cD73Ec991"
+// const nftContract = new ethers.Contract(contractAddress, contractABI, provider)
 
-// jsonreader
+ // jsonreader
 const readJSON = async (tokenId) => {
-    try {
-        const jsonFolderPath = './assets/images_final'
-        const fileName = `${tokenId}.json`
-        const filePath = path.join(jsonFolderPath, fileName)
-        const fileContent = await fs.readFileSync(filePath, 'utf-8')
-        console.log(fileContent, 'fileContent')
-        const jsonData = JSON.parse(fileContent)
-        console.log(jsonData, 'jsonData')
-
-
-        return jsonData
-    } catch(e) {
-        console.log(e)
-    }
+     try {
+         const jsonFolderPath = './assets/images_final'
+         const fileName = `${tokenId}.json`
+         const filePath = path.join(jsonFolderPath, fileName)
+         const fileContent = await fs.readFileSync(filePath, 'utf-8')
+         console.log(fileContent, 'fileContent')
+         const jsonData = JSON.parse(fileContent)
+         console.log(jsonData, 'jsonData')
+         return jsonData
+     } catch(e) {
+         console.log(e)
+     }
 }
 
 // listen carefully, bucko

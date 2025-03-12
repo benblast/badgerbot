@@ -22,6 +22,94 @@
     "descr": "<i>this potion might taste like the piss of a person who is severely dehydrated...</i>\n\n<b>- 20 bonus damage and +15% critical chance for your next monsterhunt or bar brawl</b>"
   },
   {
+    "name": "a sixpack of red bull",
+    "bonusDamage": 10,
+    "bonusXp": 0,
+    "bonusCritChance": 0,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": false,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>cracks open all six cans of red bull and pours it into a funnel stuck in his throat... maximum refreshment!</i>",
+      "+10dmg on the next fight/monsterhunt!"
+    ],
+    "descr": "<i>if one red bull gives you wings... what will a sixpack do - give me orbital rocket thrusters?</i>\n\n<b>- 10 bonus damage for your next monsterhunt or bar brawl</b>"
+  },
+  {
+    "name": "three lessons in karate",
+    "bonusDamage": 30,
+    "bonusXp": 0,
+    "bonusCritChance": 0,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": false,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>goes to his local dojo and introduces himself to the karate weebs... then starts punching air in front of a mirror while screaming in japanese!</i>",
+      "+30dmg for the next /monsterhunt!"
+    ],
+    "descr": "<i>just three lessons might sound like too few... listen - the confidence boost and the intimidation factor comes into play when your enemy thinks you are a black belt!</i>\n\n<b>- 30 bonus damage for your next /monsterhunt</b>"
+  },
+  {
+    "name": "a jar of badger piss",
+    "bonusDamage": 0,
+    "bonusXp": 0,
+    "bonusCritChance": 10,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": false,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>furiously unscrews the jar of sweet, sweet badger piss and showers it all over their face and chest... a feeling of focus and clarity washes their mind!</i>",
+      "+10% crit chance on the next fight/monsterhunt!"
+    ],
+    "descr": "<i>this is a good batch... you can tell by the muddy gelatinous texture.</i>\n\n<b>- 10% bonus crit chance for your next monsterhunt or bar brawl</b>"
+  },
+  {
+    "name": "a bad reputation",
+    "bonusDamage": 0,
+    "bonusXp": 0,
+    "bonusCritChance": 10,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": true,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 100
+    },
+    "effect": [
+      "<i>starts smacktalking and backtalking and shittalking the muddafuckin shit outta this bitchfaced asshole called</i>",
+      "got an instant <b>-100 XP</b>!"
+    ],
+    "descr": "<i>you know where and how to spread rumors that effectively but temporarily fuck with someone</i>\n\n<b>- target user instantly loses 100 XP</b>"
+  },
+  {
     "name": "the blood of Passport",
     "bonusDamage": 0,
     "bonusXp": 0,
@@ -132,6 +220,116 @@
     "descr": "<i>this psyop is a decent one because it works for like 5minutes - but sometimes that is all the time you need in the world to get what you want!</i>\n\n<b>- you dispel all active effects on target user (for example berserker potion or blood of Passport)</b>"
   },
   {
+    "name": "a gaslight",
+    "bonusDamage": 0,
+    "bonusXp": 0,
+    "bonusCritChance": 0,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": true,
+    "curse": {
+      "dispelConsumable": true,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 50
+    },
+    "effect": [
+      "<i>puts a pink lighter by his butthole and rips a fart right in the face of</i>",
+      "instantly loses <b>50 XP</b>!"
+    ],
+    "descr": "<i>gaslighting is the cheapest, most annoying shit ever... so only target someone you dont like!</i>\n\n<b>- target user instantly loses 50XP</b>"
+  },
+  {
+    "name": "the extra lives of a street cat",
+    "bonusDamage": 0,
+    "bonusXp": 0,
+    "bonusCritChance": 0,
+    "bonusDailyXp": false,
+    "invulnerable": true,
+    "invisible": false,
+    "isCurse": false,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>just found some street cats who conveniently had extra lives to spare... so you help yourself to some!</i>",
+      "you are <b>INVULNERABLE</b> for the next monsterhunt/fight"
+    ],
+    "descr": "<i>it's good to have a couple extra lives in your backpocket in case shit happens y'know!</i>\n\n<b>- invulnerability for next fight/monsterhunt</b>"
+  },
+  {
+    "name": "delirium tremens",
+    "bonusDamage": 0,
+    "bonusXp": 0,
+    "bonusCritChance": 0,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": true,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 15,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>hides all the alcoholic beverages, inducing serious delirium tremens in</i>",
+      "starts shaking and sweating as a deep seated anxiety bubbles up... they get <b>-15dmg</b> for the next monsterhunt/fight"
+    ],
+    "descr": "<i>if you are an alcoholic and you stop cold turkey, very very bad things can happen!</i>\n\n<b>- target user gets -15dmg for their next fight/monsterhunt</b>"
+  },
+  {
+    "name": "employment as a mcdonalds cashier",
+    "bonusDamage": 0,
+    "bonusXp": 25,
+    "bonusCritChance": 0,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": false,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>got a callback from the mcdonalds job he applied to and is now working the night shift taking drive-thru orders</i>",
+      "feels safe knowing that no matter how bad things get, they can always get<b>+25xp</b> by working at mickey d's"
+    ],
+    "descr": "<i>what can you say - employment at mcdonalds is like the capitalist version of a safety net!</i>\n\n<b>- you instantly gain +25 XP</b>"
+  },
+  {
+    "name": "a can of jai alai india pale ale",
+    "bonusDamage": 0,
+    "bonusXp": 250,
+    "bonusCritChance": 0,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": false,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>cracks a can of the most satisfying beverage known to man... time to get fucked up with style</i>",
+      "they get an <b>INSTANT +250xp</b>"
+    ],
+    "descr": "<i>the sweet nectar of life that gets you drunk and makes stuff funny and makes life enjoyable for a hot second</i>\n\n<b>- you instantly gain +250 XP!!!</b>"
+  },
+  {
     "name": "an m3 bradley battletank",
     "bonusDamage": 25,
     "bonusXp": 0,
@@ -174,6 +372,28 @@
       "is fuckin drenched and gets an INSTANT -150XP!"
     ],
     "descr": "<i>pump it up & aim... to give a special someone a golden shower</i>\n\n<b>- target user instantly lose -150xp</b>"
+  },
+  {
+    "name": "a pair of googly eyes",
+    "bonusDamage": 0,
+    "bonusXp": 0,
+    "bonusCritChance": 5,
+    "bonusDailyXp": false,
+    "invulnerable": false,
+    "invisible": false,
+    "isCurse": false,
+    "curse": {
+      "dispelConsumable": false,
+      "reveal": false,
+      "mute": false,
+      "weakenDamage": 0,
+      "weakenXp": 0
+    },
+    "effect": [
+      "<i>slaps on a pair of googly eyes on their dumb forehead to make the enemy underestimate them</i>",
+      "they get a bonus +5% chance for a critical hit for the next /monsterhunt!"
+    ],
+    "descr": "<i>every enemy that looks at you will underestimate you when you got a pair of googly eyes on your forehead, LFG!</i>\n\n<b>- 5% bonus critical chance for the next /monsterhunt</b>"
   },
   {
     "name": "withdrawals from hard drugs",

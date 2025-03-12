@@ -1,4 +1,5 @@
-[
+{
+  "1": [
   {
     "name": "an iranian passport",
     "diff": -25,
@@ -557,4 +558,1017 @@
     "attack": 500,
     "xpReward": 600
   }
+],
+"2": [
+  {
+    "name": "a chatbot that knows too much",
+    "diff": -5,
+    "attack": 25,
+    "xpReward": 50
+  },
+  {
+    "name": "a joe rogan fanboy",
+    "diff": -5,
+    "attack": 50,
+    "xpReward": 40
+  },
+  {
+    "name": "an army of screaming rubber chickens",
+    "diff": -5,
+    "attack": 10,
+    "xpReward": 40
+  },
+  {
+    "name": "the sharp corner of a dinner table",
+    "diff": -5,
+    "attack": 100,
+    "xpReward": 50
+  },
+  {
+    "name": "a $MOG-loving furry in a catsuit",
+    "diff": -5,
+    "attack": 55,
+    "xpReward": 75
+  },
+  {
+    "name": "the best man at the closest wedding",
+    "diff": -5,
+    "attack": 10,
+    "xpReward": 30
+  },
+  {
+    "name": "an unskippable youtube ad",
+    "diff": -5,
+    "attack": 30,
+    "xpReward": 40
+  },
+  {
+    "name": "Charles Hoskinson",
+    "diff": -5,
+    "attack": 60,
+    "xpReward": 60
+  },
+  {
+    "name": "a guy that insists he was abducted",
+    "diff": 0,
+    "attack": 50,
+    "xpReward": 50
+  },
+  {
+    "name": "a ghost on a segway",
+    "diff": 0,
+    "attack": 25,
+    "xpReward": 25
+  },
+  {
+    "name": "a bizarro-world Jerry Seinfeld",
+    "diff": 0,
+    "attack": 15,
+    "xpReward": 50
+  },
+  {
+    "name": "a sock puppet with a handgun",
+    "diff": 0,
+    "attack": 20,
+    "xpReward": 35
+  },
+  {
+    "name": "tripping too hard on shrooms",
+    "diff": 0,
+    "attack": 25,
+    "xpReward": 75
+  },
+  {
+    "name": "the hardest breadstick at Olive Garden",
+    "diff": 0,
+    "attack": 30,
+    "xpReward": 30
+  },
+  {
+    "name": "a toaster",
+    "diff": 5,
+    "attack": 25,
+    "xpReward": 45
+  },
+  {
+    "name": "an email chainletter from 1997",
+    "diff": 5,
+    "attack": 75,
+    "xpReward": 45
+  },
+  {
+    "name": "the GPS that gives shit directions",
+    "diff": 5,
+    "attack": 75,
+    "xpReward": 45
+  },
+  {
+    "name": "Double XP Lovecraft",
+    "diff": 5,
+    "attack": 75,
+    "xpReward": 400
+  },
+  {
+    "name": "the solana wormhole",
+    "diff": 5,
+    "attack": 35,
+    "xpReward": 107
+  },
+  {
+    "name": "that dealer who always cuts you short",
+    "diff": 5,
+    "attack": 75,
+    "xpReward": 125
+  },
+  {
+    "name": "a jetski rental shop owner",
+    "diff": 10,
+    "attack": 150,
+    "xpReward": 250
+  },
+  {
+    "name": "a northern moose",
+    "diff": 10,
+    "attack": 150,
+    "xpReward": 10
+  },
+  {
+    "name": "a snowman with TNT for a nose",
+    "diff": 10,
+    "attack": 200,
+    "xpReward": 150
+  },
+  {
+    "name": "a pond of gators",
+    "diff": 10,
+    "attack": 125,
+    "xpReward": 75
+  },
+  {
+    "name": "a hurricane named Chad",
+    "diff": 10,
+    "attack": 100,
+    "xpReward": 150
+  },
+  {
+    "name": "a heatwave in july",
+    "diff": 10,
+    "attack": 125,
+    "xpReward": 175
+  },
+  {
+    "name": "a knightrider car but its a volvo",
+    "diff": 10,
+    "attack": 100,
+    "xpReward": 100
+  },
+  {
+    "name": "a proprietor of a backyard methlab",
+    "diff": 15,
+    "attack": 75,
+    "xpReward": 120
+  },
+  {
+    "name": "some asian wiggers",
+    "diff": 15,
+    "attack": 250,
+    "xpReward": 150
+  },
+  {
+    "name": "a mosquito wielding a tiny sword",
+    "diff": 15,
+    "attack": 150,
+    "xpReward": 250
+  },
+  {
+    "name": "a viking ghost /w downs",
+    "diff": 15,
+    "attack": 150,
+    "xpReward": 200
+  },
+  {
+    "name": "a sauna filled with despair",
+    "diff": 15,
+    "attack": 225,
+    "xpReward": 150
+  },
+  {
+    "name": "an IKEA manual",
+    "diff": 15,
+    "attack": 250,
+    "xpReward": 50
+  },
+  {
+    "name": "a palm tree",
+    "diff": 15,
+    "attack": 25,
+    "xpReward": 250
+  },
+  {
+    "name": "Charles Hoskinson's doppelgänger",
+    "diff": 15,
+    "attack": 50,
+    "xpReward": 75
+  },
+  {
+    "name": "a crocodile in a bucket hat",
+    "diff": 15,
+    "attack": 50,
+    "xpReward": 175
+  },
+  {
+    "name": "Alex Jones personal assistant",
+    "diff": 15,
+    "attack": 100,
+    "xpReward": 300
+  },
+  {
+    "name": "Ross (again)",
+    "diff": 20,
+    "attack": 50,
+    "xpReward": 150
+  },
+  {
+    "name": "the larch... the larch.",
+    "diff": 20,
+    "attack": 200,
+    "xpReward": 300
+  },
+  {
+    "name": "a guy who thinks he's napoleon",
+    "diff": 20,
+    "attack": 225,
+    "xpReward": 375
+  },
+  {
+    "name": "a suppressed memory",
+    "diff": 20,
+    "attack": 225,
+    "xpReward": 150
+  },
+  {
+    "name": "a UFO with a tommygun",
+    "diff": 20,
+    "attack": 225,
+    "xpReward": 300
+  },
+  {
+    "name": "a random englishman",
+    "diff": 20,
+    "attack": 15,
+    "xpReward": 75
+  },
+  {
+    "name": "a lot lizard that wont give up",
+    "diff": 20,
+    "attack": 150,
+    "xpReward": 250
+  },
+  {
+    "name": "a finnish persons cold demeanor",
+    "diff": 25,
+    "attack": 50,
+    "xpReward": 150
+  },
+  {
+    "name": "their own portfolio",
+    "diff": 25,
+    "attack": 50,
+    "xpReward": 150
+  },
+  {
+    "name": "an antidisestablishmentarian",
+    "diff": 25,
+    "attack": 210,
+    "xpReward": 250
+  },
+  {
+    "name": "a pickup truck with a confederate flag",
+    "diff": 25,
+    "attack": 111,
+    "xpReward": 250
+  },
+  {
+    "name": "Greta Thunberg",
+    "diff": 30,
+    "attack": 300,
+    "xpReward": 500
+  },
+  {
+    "name": "a meth gator",
+    "diff": 30,
+    "attack": 200,
+    "xpReward": 400
+  },
+  {
+    "name": "Authoritarianism",
+    "diff": 30,
+    "attack": 100,
+    "xpReward": 250
+  },
+  {
+    "name": "all of Antifa at once",
+    "diff": 35,
+    "attack": 350,
+    "xpReward": 500
+  },
+  {
+    "name": "the city of Philadelphia",
+    "diff": 40,
+    "attack": 500,
+    "xpReward": 500
+  },
+  {
+    "name": "yo momma",
+    "diff": 50,
+    "attack": 500,
+    "xpReward": 600
+  }
+],
+"3": [
+  {
+    "name": "a chatbot that knows too much",
+    "diff": -5,
+    "attack": 25,
+    "xpReward": 50
+  },
+  {
+    "name": "a joe rogan fanboy",
+    "diff": -5,
+    "attack": 50,
+    "xpReward": 40
+  },
+  {
+    "name": "an army of screaming rubber chickens",
+    "diff": -5,
+    "attack": 10,
+    "xpReward": 40
+  },
+  {
+    "name": "the sharp corner of a dinner table",
+    "diff": -5,
+    "attack": 100,
+    "xpReward": 50
+  },
+  {
+    "name": "a $MOG-loving furry in a catsuit",
+    "diff": -5,
+    "attack": 55,
+    "xpReward": 75
+  },
+  {
+    "name": "the best man at the closest wedding",
+    "diff": -5,
+    "attack": 10,
+    "xpReward": 30
+  },
+  {
+    "name": "an unskippable youtube ad",
+    "diff": -5,
+    "attack": 30,
+    "xpReward": 40
+  },
+  {
+    "name": "Charles Hoskinson",
+    "diff": -5,
+    "attack": 60,
+    "xpReward": 60
+  },
+  {
+    "name": "a guy that insists he was abducted",
+    "diff": 0,
+    "attack": 50,
+    "xpReward": 50
+  },
+  {
+    "name": "a ghost on a segway",
+    "diff": 0,
+    "attack": 25,
+    "xpReward": 25
+  },
+  {
+    "name": "a bizarro-world Jerry Seinfeld",
+    "diff": 0,
+    "attack": 15,
+    "xpReward": 50
+  },
+  {
+    "name": "a sock puppet with a handgun",
+    "diff": 0,
+    "attack": 20,
+    "xpReward": 35
+  },
+  {
+    "name": "tripping too hard on shrooms",
+    "diff": 0,
+    "attack": 25,
+    "xpReward": 75
+  },
+  {
+    "name": "the hardest breadstick at Olive Garden",
+    "diff": 0,
+    "attack": 30,
+    "xpReward": 30
+  },
+  {
+    "name": "a toaster",
+    "diff": 5,
+    "attack": 25,
+    "xpReward": 45
+  },
+  {
+    "name": "an email chainletter from 1997",
+    "diff": 5,
+    "attack": 75,
+    "xpReward": 45
+  },
+  {
+    "name": "the GPS that gives shit directions",
+    "diff": 5,
+    "attack": 75,
+    "xpReward": 45
+  },
+  {
+    "name": "Double XP Lovecraft",
+    "diff": 5,
+    "attack": 75,
+    "xpReward": 400
+  },
+  {
+    "name": "the solana wormhole",
+    "diff": 5,
+    "attack": 35,
+    "xpReward": 107
+  },
+  {
+    "name": "that dealer who always cuts you short",
+    "diff": 5,
+    "attack": 75,
+    "xpReward": 125
+  },
+  {
+    "name": "a jetski rental shop owner",
+    "diff": 10,
+    "attack": 150,
+    "xpReward": 250
+  },
+  {
+    "name": "a northern moose",
+    "diff": 10,
+    "attack": 150,
+    "xpReward": 10
+  },
+  {
+    "name": "a snowman with TNT for a nose",
+    "diff": 10,
+    "attack": 200,
+    "xpReward": 150
+  },
+  {
+    "name": "a pond of gators",
+    "diff": 10,
+    "attack": 125,
+    "xpReward": 75
+  },
+  {
+    "name": "a hurricane named Chad",
+    "diff": 10,
+    "attack": 100,
+    "xpReward": 150
+  },
+  {
+    "name": "a heatwave in july",
+    "diff": 10,
+    "attack": 125,
+    "xpReward": 175
+  },
+  {
+    "name": "a knightrider car but its a volvo",
+    "diff": 10,
+    "attack": 100,
+    "xpReward": 100
+  },
+  {
+    "name": "a proprietor of a backyard methlab",
+    "diff": 15,
+    "attack": 75,
+    "xpReward": 120
+  },
+  {
+    "name": "some asian wiggers",
+    "diff": 15,
+    "attack": 250,
+    "xpReward": 150
+  },
+  {
+    "name": "a mosquito wielding a tiny sword",
+    "diff": 15,
+    "attack": 150,
+    "xpReward": 250
+  },
+  {
+    "name": "a viking ghost /w downs",
+    "diff": 15,
+    "attack": 150,
+    "xpReward": 200
+  },
+  {
+    "name": "a sauna filled with despair",
+    "diff": 15,
+    "attack": 225,
+    "xpReward": 150
+  },
+  {
+    "name": "an IKEA manual",
+    "diff": 15,
+    "attack": 250,
+    "xpReward": 50
+  },
+  {
+    "name": "a palm tree",
+    "diff": 15,
+    "attack": 25,
+    "xpReward": 250
+  },
+  {
+    "name": "Charles Hoskinson's doppelgänger",
+    "diff": 15,
+    "attack": 50,
+    "xpReward": 75
+  },
+  {
+    "name": "a crocodile in a bucket hat",
+    "diff": 15,
+    "attack": 50,
+    "xpReward": 175
+  },
+  {
+    "name": "Alex Jones personal assistant",
+    "diff": 15,
+    "attack": 100,
+    "xpReward": 300
+  },
+  {
+    "name": "Ross (again)",
+    "diff": 20,
+    "attack": 50,
+    "xpReward": 150
+  },
+  {
+    "name": "the larch... the larch.",
+    "diff": 20,
+    "attack": 200,
+    "xpReward": 300
+  },
+  {
+    "name": "a guy who thinks he's napoleon",
+    "diff": 20,
+    "attack": 225,
+    "xpReward": 375
+  },
+  {
+    "name": "a suppressed memory",
+    "diff": 20,
+    "attack": 225,
+    "xpReward": 150
+  },
+  {
+    "name": "a UFO with a tommygun",
+    "diff": 20,
+    "attack": 225,
+    "xpReward": 300
+  },
+  {
+    "name": "a random englishman",
+    "diff": 20,
+    "attack": 15,
+    "xpReward": 75
+  },
+  {
+    "name": "a lot lizard that wont give up",
+    "diff": 20,
+    "attack": 150,
+    "xpReward": 250
+  },
+  {
+    "name": "a finnish persons cold demeanor",
+    "diff": 25,
+    "attack": 50,
+    "xpReward": 150
+  },
+  {
+    "name": "their own portfolio",
+    "diff": 25,
+    "attack": 50,
+    "xpReward": 150
+  },
+  {
+    "name": "an antidisestablishmentarian",
+    "diff": 25,
+    "attack": 210,
+    "xpReward": 250
+  },
+  {
+    "name": "a pickup truck with a confederate flag",
+    "diff": 25,
+    "attack": 111,
+    "xpReward": 250
+  },
+  {
+    "name": "Greta Thunberg",
+    "diff": 30,
+    "attack": 300,
+    "xpReward": 500
+  },
+  {
+    "name": "a meth gator",
+    "diff": 30,
+    "attack": 200,
+    "xpReward": 400
+  },
+  {
+    "name": "Authoritarianism",
+    "diff": 30,
+    "attack": 100,
+    "xpReward": 250
+  },
+  {
+    "name": "all of Antifa at once",
+    "diff": 35,
+    "attack": 350,
+    "xpReward": 500
+  },
+  {
+    "name": "the city of Philadelphia",
+    "diff": 40,
+    "attack": 500,
+    "xpReward": 500
+  },
+  {
+    "name": "yo momma",
+    "diff": 50,
+    "attack": 500,
+    "xpReward": 600
+  }
+],
+"4": [
+  {
+    "name": "your uber eats delivery driver",
+    "diff": 15,
+    "attack": 75,
+    "xpReward": 120
+  },
+  {
+    "name": "some frat boy wiggers",
+    "diff": 15,
+    "attack": 250,
+    "xpReward": 250
+  },
+  {
+    "name": "a gator priest",
+    "diff": 15,
+    "attack": 150,
+    "xpReward": 250
+  },
+  {
+    "name": "an anti-semite",
+    "diff": 15,
+    "attack": 150,
+    "xpReward": 200
+  },
+  {
+    "name": "a time-share salesman",
+    "diff": 15,
+    "attack": 225,
+    "xpReward": 150
+  },
+  {
+    "name": "an episode of F.R.I.E.N.D.S.",
+    "diff": 15,
+    "attack": 250,
+    "xpReward": 50
+  },
+  {
+    "name": "a non-white",
+    "diff": 15,
+    "attack": 25,
+    "xpReward": 250
+  },
+  {
+    "name": "the class bully",
+    "diff": 15,
+    "attack": 50,
+    "xpReward": 75
+  },
+  {
+    "name": "a bout of diarrhea",
+    "diff": 15,
+    "attack": 50,
+    "xpReward": 175
+  },
+  {
+    "name": "the inventor of chemtrails",
+    "diff": 15,
+    "attack": 100,
+    "xpReward": 300
+  },
+  {
+    "name": "the loudest guy at the party",
+    "diff": 20,
+    "attack": 50,
+    "xpReward": 150
+  },
+  {
+    "name": "a meatball cultist",
+    "diff": 20,
+    "attack": 200,
+    "xpReward": 300
+  },
+  {
+    "name": "Martin Shkreli's lawyer",
+    "diff": 20,
+    "attack": 225,
+    "xpReward": 375
+  },
+  {
+    "name": "a Florida Man Wizard",
+    "diff": 20,
+    "attack": 225,
+    "xpReward": 250
+  },
+  {
+    "name": "the breadwinner of the family",
+    "diff": 20,
+    "attack": 225,
+    "xpReward": 300
+  },
+  {
+    "name": "a lizard king on a tantrum",
+    "diff": 25,
+    "attack": 15,
+    "xpReward": 75
+  },
+  {
+    "name": "the CEO of Vape Nation",
+    "diff": 25,
+    "attack": 150,
+    "xpReward": 250
+  },
+  {
+    "name": "the crushing weight of reality",
+    "diff": 25,
+    "attack": 250,
+    "xpReward": 350
+  },
+  {
+    "name": "any leverage trade platform",
+    "diff": 30,
+    "attack": 250,
+    "xpReward": 250
+  },
+  {
+    "name": "a grumpy pelican",
+    "diff": 30,
+    "attack": 310,
+    "xpReward": 220
+  },
+  {
+    "name": "West Virginia",
+    "diff": 30,
+    "attack": 111,
+    "xpReward": 250
+  },
+  {
+    "name": "a boat full of japanese whalers",
+    "diff": 35,
+    "attack": 300,
+    "xpReward": 500
+  },
+  {
+    "name": "a lizard wizard",
+    "diff": 35,
+    "attack": 200,
+    "xpReward": 400
+  },
+  {
+    "name": "their own dark past",
+    "diff": 40,
+    "attack": 500,
+    "xpReward": 550
+  },
+  {
+    "name": "Populism",
+    "diff": 40,
+    "attack": 350,
+    "xpReward": 500
+  },
+  {
+    "name": "an ancient chinese ninja on crack",
+    "diff": 40,
+    "attack": 600,
+    "xpReward": 600
+  },
+  {
+    "name": "an IKEA spy drone",
+    "diff": 50,
+    "attack": 666,
+    "xpReward": 666
+  }
+],
+"5": [
+  {
+    "name": "the owner of Telegram",
+    "diff": 25,
+    "attack": 75,
+    "xpReward": 120
+  },
+  {
+    "name": "a pack of angry investors",
+    "diff": 25,
+    "attack": 250,
+    "xpReward": 250
+  },
+  {
+    "name": "a moonboy",
+    "diff": 25,
+    "attack": 150,
+    "xpReward": 250
+  },
+  {
+    "name": "a schizoaffective autist",
+    "diff": 25,
+    "attack": 150,
+    "xpReward": 200
+  },
+  {
+    "name": "a Passport",
+    "diff": 25,
+    "attack": 225,
+    "xpReward": 150
+  },
+  {
+    "name": "Racism",
+    "diff": 25,
+    "attack": 250,
+    "xpReward": 50
+  },
+  {
+    "name": "a $LINK marine",
+    "diff": 25,
+    "attack": 25,
+    "xpReward": 250
+  },
+  {
+    "name": "a smelly fart on a public bus",
+    "diff": 25,
+    "attack": 50,
+    "xpReward": 75
+  },
+  {
+    "name": "a Californian",
+    "diff": 25,
+    "attack": 50,
+    "xpReward": 175
+  },
+  {
+    "name": "Hard R-nold Schwarzenegger",
+    "diff": 25,
+    "attack": 100,
+    "xpReward": 300
+  },
+  {
+    "name": "the coolest guy at the party",
+    "diff": 30,
+    "attack": 50,
+    "xpReward": 150
+  },
+  {
+    "name": "a teak deck builder",
+    "diff": 30,
+    "attack": 200,
+    "xpReward": 300
+  },
+  {
+    "name": "their local weed store clerk",
+    "diff": 30,
+    "attack": 225,
+    "xpReward": 375
+  },
+  {
+    "name": "an itch you cant reach",
+    "diff": 30,
+    "attack": 225,
+    "xpReward": 250
+  },
+  {
+    "name": "a lady named Oggo",
+    "diff": 30,
+    "attack": 225,
+    "xpReward": 300
+  },
+  {
+    "name": "Winston Churchill, 8 shots deep",
+    "diff": 35,
+    "attack": 15,
+    "xpReward": 75
+  },
+  {
+    "name": "the fatwa that was put against them",
+    "diff": 35,
+    "attack": 150,
+    "xpReward": 250
+  },
+  {
+    "name": "sharia law",
+    "diff": 35,
+    "attack": 250,
+    "xpReward": 350
+  },
+  {
+    "name": "Jeff Bezos, the bald version",
+    "diff": 40,
+    "attack": 250,
+    "xpReward": 250
+  },
+  {
+    "name": "the plans to build a local mosque",
+    "diff": 40,
+    "attack": 310,
+    "xpReward": 220
+  },
+  {
+    "name": "all of South Dakota",
+    "diff": 40,
+    "attack": 111,
+    "xpReward": 250
+  },
+  {
+    "name": "the king of japanese whalers",
+    "diff": 45,
+    "attack": 300,
+    "xpReward": 500
+  },
+  {
+    "name": "a teenage goth doomer",
+    "diff": 45,
+    "attack": 200,
+    "xpReward": 400
+  },
+  {
+    "name": "the vaccine",
+    "diff": 50,
+    "attack": 500,
+    "xpReward": 550
+  },
+  {
+    "name": "the sound guy at a concert",
+    "diff": 50,
+    "attack": 350,
+    "xpReward": 500
+  },
+  {
+    "name": "a woman claiming child support",
+    "diff": 50,
+    "attack": 600,
+    "xpReward": 600
+  },
+  {
+    "name": "the morning boner",
+    "diff": 60,
+    "attack": 666,
+    "xpReward": 666
+  }
+],
+"boss": [
+  {
+    "name": "lady dumpstar",
+    "diff": 25,
+    "attack": 75,
+    "xpReward": 120
+  },
+  {
+    "name": "the XRP army",
+    "diff": 45,
+    "attack": 450,
+    "xpReward": 450
+  },
+  {
+    "name": "Chat Gepetto",
+    "diff": 66,
+    "attack": 666,
+    "xpReward": 666
+  },
+  {
+    "name": "Ragnarök",
+    "diff": 88,
+    "attack": 1000,
+    "xpReward": 1000
+  },
+  {
+    "name": "Wayne Gretzky",
+    "diff": 97,
+    "attack": 1111,
+    "xpReward": 1111
+  }
 ]
+}

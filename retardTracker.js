@@ -1,16 +1,24 @@
 import pkg from 'node-persist'
 import fs from 'fs/promises'
 import path from 'path'
+import { verifyMessage } from 'ethers'
 import { randomInt } from 'crypto'
 import { retardHelpers } from './retardHelpers.js'
 import monsters from './monsters.json' assert { type: 'json' }
 import weapons from './weapons.json' assert { type: 'json' }
 import consumables from './consumables.json' assert { type: 'json' }
 const { init, getItem, setItem, values } = pkg
+const verificationMessages = new Map()
 // start the fuckin node-persist storage
 await init({ dir: './user-data' })
 
 export const retardTracker = {
+    async getUser(ctx, userId) {
+        if(!userId) return console.log('couldnt extract userId from', ctx.from.id)
+        let user = await pkg.getItem(userId.toString())
+        if(!user) return console.log('no user found')
+        return user
+    },
     async awardChatXP (ctx, user) {
         const {username, first_name, last_name} = user
         const userId = user.id
@@ -24,7 +32,7 @@ export const retardTracker = {
             level: 0,
             dumpstars: 0,
             fightTimer: 0,
-            messages: 0,
+            messages: 1,
             quests: {
                 dailyxp: {
                     timestamp: 0,
@@ -39,7 +47,8 @@ export const retardTracker = {
                 monsterHunt: {
                     timestamp: 0,
                     combo: 0,
-                    highscore: 0
+                    highscore: 0,
+                    level: 1
                 }
             },
             inventory: {
@@ -86,6 +95,17 @@ export const retardTracker = {
         if (user) await pkg.setItem(userId.toString(), user)
         return user
     },
+    async saveRaffleData(userId, raffleInfo) {
+        let user = await pkg.getItem(userId.toString())
+        if(!user) {
+            console.log(ctx, userId, user)
+            throw new Error("user not found or invalid data")
+        }
+        if(user.hasOwnProperty('raffle')) return false
+        user.raffle = raffleInfo
+        await pkg.setItem(userId.toString(), user)
+        return user
+    },
     async removeDumpstar(userId) {
         let user = await pkg.getItem(userId.toString())
         if(!user) {
@@ -113,7 +133,7 @@ export const retardTracker = {
             user.level++  // level up the user
             counter++
         }
-        if(counter >= 1) await ctx.reply(`🎉${user.first_name} got ${counter} level(s) to reach <b>level ${user.level}</b> you crazy bastard!🎉`, {parse_mode:'HTML'});
+        if(counter >= 1) await ctx.reply(`🎉${user.first_name} got ${counter} level(s) to reach <b>level ${user.level}</b>!🎉`, {parse_mode:'HTML'});
 
         // send back user objectaroni to be saved in db
         return user
@@ -139,7 +159,7 @@ export const retardTracker = {
             }
         }
 
-        if(counter >= 1) await ctx.reply(`oh shit ${user.first_name ? `<b>${user.first_name}</b>` : "Hidden"}!!\n\n you lost ${counter} level(s) and badgered your way DOWN to level ${user.level} you crazy bastard!`, {reply_to_message_id: ctx.message.message_id, parse_mode:'HTML'});
+        if(counter >= 1) await ctx.reply(`oh shit ${user.first_name ? `<b>${user.first_name}</b>` : "Hidden"}, you lost ${counter} level(s) and badgered your way DOWN to level ${user.level}!`, {reply_to_message_id: ctx.message.message_id, parse_mode:'HTML'});
         // send back the updated user object to be saved in the fukkin DB
         return user
     },
@@ -262,7 +282,7 @@ export const retardTracker = {
 
             user.inventory.consumables[freeSlot] = theLoot
 
-            let successMessage = `📦<b>${user.first_name}</b> found ${theLoot.name}📦\n\ndescription:\n${theLoot.descr}`
+            let successMessage = `📦<b>${user.first_name}</b> found <i>${theLoot.name}</i>📦\n\ndescription:\n${theLoot.descr}`
             let success = await pkg.setItem(userId.toString(), user)
             return await ctx.reply(successMessage, {reply_to_message_id: ctx.message.message_id, parse_mode: 'HTML'})
         }
@@ -270,7 +290,13 @@ export const retardTracker = {
         let failMessage = `📦 wait ${timeLeft} to claim daily loot again 📦`
         return await ctx.reply(failMessage, {reply_to_message_id: ctx.message.message_id, parse_mode: 'HTML'})
     },
-    async battleMonster(ctx, userId) {
+    async theShop(ctx, userId) {
+        if(!ctx||!userId) throw Error('no ctx or userId in theShop')
+        let user = await pkg.getItem(userId.toString())
+        if(!user) throw Error('no user found in theShop for userId', userId)
+        return user
+    },
+    async battleMonster(ctx, userId, bossBattle) {
         if(!ctx||!userId) throw Error('no ctx or userid in battlemonster')
         let user = await pkg.getItem(userId.toString())
         if(!user) throw Error('user not found baby')
@@ -281,8 +307,6 @@ export const retardTracker = {
         let timeDiff = current_unix_timestamperoni - user.quests.monsterHunt.timestamp
         if(timeDiff <= timeReq) return ctx.reply(`chill for ${Math.floor((timeReq - timeDiff)/1000)} more seconds, you rowdy badger`, {reply_to_message_id: ctx.message.message_id, parse_mode:'HTML'})
 
-        const randomMonsterInt = await randomInt(0, monsters.length)
-        //const randomMonsterInt = Math.floor(Math.random() * monsters.length)
         const randomFightDeciderInt = await randomInt(0, 101)
         let criticalHit = false
 
@@ -296,8 +320,17 @@ export const retardTracker = {
         }
         if(randomFightDeciderInt >= criticalDecider) criticalHit = true
 
-        const theMonsterToFight = monsters[randomMonsterInt]
-        console.log(user.first_name,'battles',theMonsterToFight)
+        let theMonsterToFight
+        if(!bossBattle) {
+            theMonsterToFight = retardHelpers.getRandomMonster(Math.min(3, user.quests.monsterHunt.level+1))
+            console.log(user.first_name,'battles',theMonsterToFight)
+        } else {
+            let bossMonsterLevel = Math.min(2, user.quests.monsterHunt.level)
+            if (bossMonsterLevel < 0) bossMonsterLevel = 0
+            theMonsterToFight = retardHelpers.getBossMonster(bossMonsterLevel)
+            console.log(user.first_name,'bossbattles',theMonsterToFight)
+        }
+
 
         let bonusChance = Math.floor(user.level/10)
         if(bonusChance > 10) bonusChance = 10
@@ -353,16 +386,39 @@ export const retardTracker = {
                 let userHasFreeSlot = retardHelpers.findFreeSlot(user.inventory.weapons)
                 let userHasDuplicate = retardHelpers.findDuplicate(user.inventory.weapons, awardedWeapon.name)
 
-                if(userHasDuplicate) loot = `📦you found ${awardedWeapon.name}📦\n📦but you already got that so i threw it in the bushes📦`
-                if(!userHasFreeSlot) loot = `📦you found <b>${awardedWeapon.name}</b> but you got 5 weapons already!!📦`
+                if(userHasDuplicate) loot = `📦you found <b>${awardedWeapon.name}</b>📦\n📦- but you already got that so i threw it in the bushes\n`
+                if(!userHasFreeSlot) loot = `📦you found <b>${awardedWeapon.name}</b>📦\n📦- but you got 5 weapons already so i tossed dat shii!\n`
 
                 if(userHasFreeSlot && !userHasDuplicate) {
                     user.inventory.weapons[userHasFreeSlot] = awardedWeapon //award the weapon in the free slot
-                    loot = `📦you found <b>${awardedWeapon.name}</b>!!📦`
-                    console.log(awardedWeapon, 'weapon')
+                    loot = `📦- you found <b>${awardedWeapon.name}</b>(<i>${awardedWeapon.attack}dmg</i>)!!\n`
+                    console.log(awardedWeapon, 'weapon', 'to', userId, user.first_name)
                 }
             }
-            let winMessage = `⚔️ <b>a battle begins</b> ⚔️\n`
+            // AWARD CONSUMABLE ITEM FOR BOSS WIN
+            if(bossBattle) {
+                let awardedConsumable = retardHelpers.getRandomConsumable()
+                let userHasFreeConsumableSlot = retardHelpers.findFreeSlot(user.inventory.consumables)
+                let userHasConsumableDuplicate = retardHelpers.findDuplicate(user.inventory.consumables, awardedConsumable.name)
+
+                if(userHasConsumableDuplicate) loot = `⚗️you found <b>${awardedConsumable.name}</b>⚗️\n⚗️- but you already got that so i threw it in the bushes`
+                if(!userHasFreeConsumableSlot) loot = `⚗️you found <b>${awardedConsumable.name}</b>⚗️\n⚗️- but you got 5 items already so i tossed dat shii!`
+                
+                if(userHasFreeConsumableSlot && !userHasConsumableDuplicate) {
+                    user.inventory.consumables[userHasFreeConsumableSlot] = awardedConsumable //award the weapon in the free slot
+                    if(loot) {
+                        loot += `⚗️- you found <b>${awardedConsumable.name}</b>`
+                    } else {
+                        loot = `⚗️- you found <b>${awardedConsumable.name}</b>`
+                    }
+                    console.log(awardedConsumable.name, 'consumable item', 'to', userId, user.first_name) 
+                }
+
+            }
+            let winMessage
+            if(!bossBattle) winMessage = `⚔️ <b>a battle begins</b> ⚔️\n`
+            if(bossBattle) winMessage = `🦖 <b>A BOSS BATTLE BEGINS</b> 🦖\n`
+            winMessage += `🏰- <i>you are on DUNGEON LEVEL ${user.quests.monsterHunt.level+1}!</i>\n`
             winMessage += `👤 <b>${user.first_name}</b> challenges <b>${theMonsterToFight.name}</b> to battle!\n`
 
             //append curse info if user has any
@@ -380,6 +436,20 @@ export const retardTracker = {
 
             if(!item1 && !item2) winMessage += `\n`
 
+
+            winMessage += `🛡️ <b>monster stats</b>:\n`
+            winMessage += `- <b>health</b>: <i>${monsterDifficulty} HP</i>\n`
+            winMessage += `- <b>attack</b>: <i>${theMonsterToFight.attack} dmg</i>\n\n`
+            
+            let equippedWeapon1 = user.inventory.equippedWeapon[1] || {}
+            let equippedWeapon2 = user.inventory.equippedWeapon[2] || {}
+
+            if(criticalHit) {
+                winMessage += `💥<b>YOU GOT CRITICAL HIT!!!</b>💥\n`
+            } else {
+                winMessage += `💥<b>${user.first_name} STRIKES</b>💥\n`
+            }
+
             //append item info if user has any equipped
             if(item1||item2) {
                 winMessage += `🍯 <b>${user.first_name}</b> is invigorated by `
@@ -391,34 +461,24 @@ export const retardTracker = {
                     winMessage += `<i>${user.inventory.equippedConsumables[2].name}</i>!\n\n`
                 }
             }
-            winMessage += `🛡️ <b>monster stats</b>:\n`
-            winMessage += `- <b>health</b>: ${monsterDifficulty} HP\n`
-            winMessage += `- <b>attack</b>: ${theMonsterToFight.attack} dmg\n\n`
-            
-            let equippedWeapon1 = user.inventory.equippedWeapon[1] || {}
-            let equippedWeapon2 = user.inventory.equippedWeapon[2] || {}
 
-            if(criticalHit) {
-                winMessage += `💥<b>YOU GOT CRITICAL HIT!!!</b>💥\n`
-            } else {
-                winMessage += `💥<b>YOU STRIKE</b>💥\n`
-            }
             if(!equippedWeapon1.hasOwnProperty('name') && !equippedWeapon2.hasOwnProperty('name')) {
                 winMessage += `💥(<b>${bonusChance}</b> lvl bonus + <b>${randomFightDeciderInt}${criticalHit ? `X2 critical` : ``}</b> dmg)💥\n`
             }
 
             if(equippedWeapon1.hasOwnProperty('name') && !equippedWeapon2.hasOwnProperty('name')) {
-                winMessage += `💥you fight using <b>${user.inventory.equippedWeapon[1].name}</b>(<i>${user.inventory.equippedWeapon[1].attack}dmg</i>)💥\n`
+                winMessage += `🗡️you fight using <b>${user.inventory.equippedWeapon[1].name}</b>(<i>${user.inventory.equippedWeapon[1].attack}dmg</i>)🗡️\n`
                 winMessage += `💥(wpn:<b>${user.inventory.equippedWeapon[1].attack}dmg</b> <b>${bonusChance}</b> lvl dmg + <b>${randomFightDeciderInt}${criticalHit ? `X2 critical` : ``}</b> dmg)💥\n`
             }
 
             if(!equippedWeapon1.hasOwnProperty('name') && equippedWeapon2.hasOwnProperty('name')) {
-                winMessage += `💥you fight using <b>${user.inventory.equippedWeapon[2].name}</b>(<i>${user.inventory.equippedWeapon[2].attack}dmg</i>)💥\n`
+                winMessage += `🗡️you fight using <b>${user.inventory.equippedWeapon[2].name}</b>(<i>${user.inventory.equippedWeapon[2].attack}dmg</i>)🗡️\n`
                 winMessage += `💥(wpn:<b>${user.inventory.equippedWeapon[2].attack}dmg</b> <b>${bonusChance}</b> lvl dmg + <b>${randomFightDeciderInt}${criticalHit ? `X2 critical` : ``}</b> dmg)💥\n`
             }
 
-            if(equippedWeapon1.hasOwnProperty('name') && equippedWeapon2.hasOwnProperty('name')) {
-                winMessage += `💥using <b>${user.inventory.equippedWeapon[1].name}</b>(<i>${user.inventory.equippedWeapon[1].attack}dmg</i>)💥\n💥and <b>${user.inventory.equippedWeapon[2].name}</b>(<i>${user.inventory.equippedWeapon[2].attack}dmg</i>)💥\n`
+            const userIsFullyEquipped = retardHelpers.isInvFull(user.inventory.equippedWeapon)
+            if(userIsFullyEquipped) {
+                winMessage += `🗡️using <b>${user.inventory.equippedWeapon[1].name}</b>(<i>${user.inventory.equippedWeapon[1].attack}dmg</i>)🗡️\n🗡️and <b>${user.inventory.equippedWeapon[2].name}</b>(<i>${user.inventory.equippedWeapon[2].attack}dmg</i>)🗡️\n`
                 winMessage += `💥(wpns:(<b>${user.inventory.equippedWeapon[1].attack}</b> + <b>${user.inventory.equippedWeapon[2].attack}</b>)dmg + <b>${bonusChance}</b> lvl dmg + <b>${randomFightDeciderInt}${criticalHit ? `X2 critical` : ``}</b>dmg)💥\n`
             }
 
@@ -432,9 +492,23 @@ export const retardTracker = {
             winMessage += `💥<b>YOU HIT FOR ${fightChance} DMG!</b>💥\n\n`
 
             winMessage += `🔥 <b>victory!</b> 🔥\n`
+            user.quests.monsterHunt.combo++
+            user.quests.monsterHunt.timestamp = Date.now()
+            const didMonstersLevelUp = retardHelpers.checkMonsterLevelUp(user.quests.monsterHunt)
+            if(didMonstersLevelUp && !bossBattle) {
+                user.quests.monsterHunt.level = Math.min(4, user.quests.monsterHunt.level+1)
+                winMessage += `🐊<i>you advanced to </i><b>DUNGEON LEVEL ${user.quests.monsterHunt.level + 1}</b>!!!\n`
+            }
+            
+            if(user.quests.monsterHunt.highscore < user.quests.monsterHunt.combo) {
+                user.quests.monsterHunt.highscore = user.quests.monsterHunt.combo
+                winMessage += `✨<i>${user.first_name} set a new highscore of ${user.quests.monsterHunt.highscore} monsters killed in a row!</i>\n`
+            } else {
+                winMessage += `✨<i>${user.first_name} has killed ${user.quests.monsterHunt.combo} monsters in a row!</i>\n`
+            }
             winMessage += `- <b>${user.first_name}</b> has vanquished <b>${theMonsterToFight.name}</b>!\n`
             winMessage += `- <b>${theMonsterToFight.xpReward}</b> XP gained!\n`
-            winMessage += `- <b>total XP</b>: ${user.xp} XP\n\n`
+            winMessage += `- <b>total XP</b>: ${user.xp+theMonsterToFight.xpReward} XP\n\n`
 
             if(loot === 0) {
                 winMessage += '🏆 <b>well fought, brave badger!</b> 🏆'
@@ -447,16 +521,22 @@ export const retardTracker = {
             // AND ALL CURSES THAT WEAKENDAMAGE ETC
             user = retardHelpers.removeAllConsumableCombatEffects(user) 
 
+
             await ctx.reply(winMessage, { reply_to_message_id: ctx.message.message_id, parse_mode: 'HTML' })
-            user.quests.monsterHunt.combo++
-            user.quests.monsterHunt.timestamp = Date.now()
+
             user = await this.addXp(ctx, userId, user, theMonsterToFight.xpReward)
         }
 
         // IF LOSING SCENARIO HERE
         if(fightChance < monsterDifficulty) {
             let invulnerability = false
-            let loseMessage = `⚔️ <b>a battle begins</b> ⚔️\n`
+            let loseMessage
+            if(bossBattle) {
+                loseMessage = `🦖 <b>A BOSS BATTLE BEGINS!!!</b> 🦖\n`
+            } else {
+                loseMessage = `⚔️ <b>a battle begins</b> ⚔️\n`                
+            }
+            loseMessage += `🏰- <i>you are on DUNGEON LEVEL ${user.quests.monsterHunt.level+1}!</i>\n`
             loseMessage += `👤 <b>${user.first_name}</b> challenges <b>${theMonsterToFight.name}</b> to battle!\n`
             //append curse info if user has any
             if(curse1||curse2) {
@@ -477,6 +557,20 @@ export const retardTracker = {
 
             if(!item1 && !item2) loseMessage += `\n`
 
+
+            loseMessage += `🛡️ <b>monster stats</b>:\n`
+            loseMessage += `- <b>health</b>: ${monsterDifficulty} HP\n`
+            loseMessage += `- <b>attack</b>: ${theMonsterToFight.attack} dmg\n\n`
+
+            let equippedWeapon1 = user.inventory.equippedWeapon[1] || {}
+            let equippedWeapon2 = user.inventory.equippedWeapon[2] || {}
+
+            if(criticalHit) {
+                loseMessage += `💥<b>CRITICAL HIT!!!</b>💥\n`
+            } else {
+                loseMessage += `💥 <b>${user.first_name} STRIKES</b> 💥\n`    
+            }
+
             //append item info if user has any equipped
             if(item1||item2) {
                 loseMessage += `🍯 <b>${user.first_name}</b> is invigorated by `
@@ -489,49 +583,37 @@ export const retardTracker = {
                 }
             }
 
-            loseMessage += `🛡️ <b>monster stats</b>:\n`
-            loseMessage += `- <b>health</b>: ${monsterDifficulty} HP\n`
-            loseMessage += `- <b>attack</b>: ${theMonsterToFight.attack} dmg\n\n`
-
-            let equippedWeapon1 = user.inventory.equippedWeapon[1] || {}
-            let equippedWeapon2 = user.inventory.equippedWeapon[2] || {}
-
-            if(criticalHit) {
-                loseMessage += `💥<b>CRITICAL HIT!!!</b>💥\n`
-            } else {
-                loseMessage += `💥 <b>YOU STRIKE</b> 💥\n`    
-            }
-
             if(!equippedWeapon1.hasOwnProperty('name') && !equippedWeapon2.hasOwnProperty('name')) { // IF NO WEAPONS AT ALL
                 loseMessage += `💥 (<b>${bonusChance}</b> lvl bonus + <b>${randomFightDeciderInt}${criticalHit ? `X2 critical` : ``}</b> dmg) 💥\n`
             }
 
             if(equippedWeapon1.hasOwnProperty('name') && !equippedWeapon2.hasOwnProperty('name')) { // IF WEAPON IN SLOT 1 BUT NOT 2
-                loseMessage += `💥<b>you fight using ${user.inventory.equippedWeapon[1].name}</b>(<i>${user.inventory.equippedWeapon[1].attack}dmg</i>)💥\n`
+                loseMessage += `🗡️<b>you fight using ${user.inventory.equippedWeapon[1].name}</b>(<i>${user.inventory.equippedWeapon[1].attack}dmg</i>)🗡️\n`
                 loseMessage += `💥(weapons:<b>${user.inventory.equippedWeapon[1].attack}dmg</b> + <b>${bonusChance}</b> lvl dmg + <b>${randomFightDeciderInt}${criticalHit ? `X2 critical` : ``}</b> dmg)💥\n`
             }
 
             if(!equippedWeapon1.hasOwnProperty('name') && equippedWeapon2.hasOwnProperty('name')) { // IF WEAPON IN SLOT 2 BUT NOT 1
-                loseMessage += `💥<b>you fight using ${user.inventory.equippedWeapon[2].name}</b>(<i>${user.inventory.equippedWeapon[2].attack}dmg</i>)💥\n`
+                loseMessage += `🗡️<b>you fight using ${user.inventory.equippedWeapon[2].name}</b>(<i>${user.inventory.equippedWeapon[2].attack}dmg</i>)🗡️\n`
                 loseMessage += `💥(weapons:<b>${user.inventory.equippedWeapon[2].attack}dmg</b> + <b>${bonusChance}</b> lvl dmg + <b>${randomFightDeciderInt}${criticalHit ? `X2 critical` : ``}</b> dmg)💥\n`
             }
 
             if(equippedWeapon1.hasOwnProperty('name') && equippedWeapon2.hasOwnProperty('name')) { // IF WEAPONS IN BOTH SLOTS
-                loseMessage += `💥<b>using ${user.inventory.equippedWeapon[1].name}</b>(<i>${user.inventory.equippedWeapon[1].attack}dmg</i>)💥\n💥<b>and ${user.inventory.equippedWeapon[2].name}</b>(<i>${user.inventory.equippedWeapon[2].attack}dmg</i>)💥\n`
+                loseMessage += `🗡️<b>using ${user.inventory.equippedWeapon[1].name}</b>(<i>${user.inventory.equippedWeapon[1].attack}dmg</i>)🗡️\n🗡️<b>and ${user.inventory.equippedWeapon[2].name}</b>(<i>${user.inventory.equippedWeapon[2].attack}dmg</i>)🗡️\n`
                 loseMessage += `💥(weapons:(<b>${user.inventory.equippedWeapon[1].attack}</b> + <b>${user.inventory.equippedWeapon[2].attack}</b>)dmg + <b>${bonusChance}</b> lvl dmg + <b>${randomFightDeciderInt}${criticalHit ? `X2 critical` : ``}</b> dmg)💥\n`
             }
 
             if(itemAttackBonus > 0) {
-                winMessage += `💥(items:(<b>${itemAttackBonus}</b>dmg💥\n`
+                loseMessage += `💥(items:(<b>${itemAttackBonus}</b>dmg💥\n`
             }
             if(itemAttackCurse > 0) {
-                winMessage += `💥(curse:(<b>-${itemAttackCurse}</b>dmg💥\n`
+                loseMessage += `💥(curse:(<b>-${itemAttackCurse}</b>dmg💥\n`
             }
 
             loseMessage += `💥<b>YOU HIT FOR ${fightChance} DMG!!</b>💥\n\n`
 
             loseMessage += `💔<b>defeat!</b>💔\n`
             loseMessage += `- <b>${user.first_name}</b> got pwnd by <b>${theMonsterToFight.name}</b>😞\n`
+            loseMessage += `😞<i>your killcombo has been reset from ${user.quests.monsterHunt.combo} to 0</i>\n😞<i>your DUNGEON LEVEL has been reset to 1</i>\n`
             if(invulnerability) {
                 loseMessage += `- <b>${theMonsterToFight.attack}</b> XP would be lost in damage <i>BUT YOU ARE INVULNERABLE</i>!\n`
             } else {
@@ -545,6 +627,10 @@ export const retardTracker = {
             await ctx.reply(loseMessage, { reply_to_message_id: ctx.message.message_id, parse_mode: 'HTML' })
             user.quests.monsterHunt.combo = 0
             user.quests.monsterHunt.timestamp = Date.now()
+            user.quests.monsterHunt.level = 0
+            if(invulnerability) {
+                user = await this.subtractXp(ctx, userId, user, 0)                
+            }
             user = await this.subtractXp(ctx, userId, user, theMonsterToFight.attack)
         }
     },
@@ -832,7 +918,7 @@ export const retardTracker = {
 
         let theItems = user.inventory.consumables
         let isInvFull = retardHelpers.isInvFull(theItems)
-        if(isInvFull) return await ctx.reply('this dude has 5 weapons in his inv which is max!')
+        if(isInvFull) return await ctx.reply('this dude has 5 consumable items in his inv which is max!')
 
         const awardedItem = retardHelpers.getRandomConsumable()
 
@@ -902,7 +988,7 @@ export const retardTracker = {
 
             if (userHasDuplicate) return await ctx.reply('you cant equip the same item twice', {reply_to_message_id: ctx.message.message_id, parse_mode:'HTML'})
 
-            message = `⚗️${user.first_name} used <b>${theItemToEquip.name}</b>!⚗️\n\n`
+            message = `⚗️<b>${user.first_name}</b> used <i>${theItemToEquip.name}</i>!⚗️\n\n`
 
             //if its not a bonusXp-instant-use item then we need to equip it
             if(!theItemToEquip.bonusXp) {
@@ -1023,7 +1109,7 @@ export const retardTracker = {
         if(!ctx || !userId || !weaponNumberToUnequip) throw Error('missing variables in retardTracker.unequipWeapon')
         let user = await pkg.getItem(userId.toString())
         if(!user) throw Error('no user found babe')
-        let isEquippedWeaponsEmpty = retardHelpers.isInvFull(user.inventory.equippedWeapon)
+        let isEquippedWeaponsEmpty = retardHelpers.isInvEmpty(user.inventory.equippedWeapon)
         if(isEquippedWeaponsEmpty) return await ctx.reply('mate, you are fully unequipped already', {reply_to_message_id: ctx.message.message_id, parse_mode:'HTML'})
 
         if(!user.inventory.equippedWeapon[weaponNumberToUnequip].hasOwnProperty('name')) return await ctx.reply('mate, that slot is empty already', {reply_to_message_id: ctx.message.message_id, parse_mode:'HTML'})
@@ -1083,6 +1169,64 @@ export const retardTracker = {
         user.inventory.consumables[itemToRemove] = {}
         let success = await pkg.setItem(userId.toString(), user)
         return await ctx.reply(`⚔️you tossed <b>${theRemovedItem.name}</b> into the jungle never to be seen again`, {reply_to_message_id: ctx.message.message_id, parse_mode:'HTML'})
+    },
+    async verifyWallet(ctx, userId) {
+        if(!ctx||!userId) throw Error('no ctx or userId in verifyWallet')
+        let user = await retardHelpers.getUser(userId)
+        if(!user) throw Error('no user found in verifyWallet')
+        if(!user.hasOwnProperty('wallet') || !user.hasOwnProperty('isVerified')) {
+            user.wallet = {
+                ethAddress: '',
+                ethSignature: '',
+                solAddress: '',
+                solSignature: '',
+                timestamp: 0
+            }
+            user.isVerified = false
+        }
+
+        if(user.isVerified) return await ctx.reply(`Mr. Badger... you're already verified`)
+
+        //if we find the message in the temporary Map of verificationMessages, we can proceed to extract the signed message and verify it
+        if(verificationMessages.get(userId)) {
+            const verificationMessage = verificationMessages.get(userId)
+            if(!verificationMessage) throw Error('couldnt fetch verificationmessage from verificationMessages')
+
+            // get the fuckin command and the signed message (/verify <signedmessage>)
+            const message = ctx.message.text
+            if(!message) throw Error('couldnt extract text from /verify message')
+
+            // regex to get the text that starts with 0x after /verify and ignore any extra stuff
+            const match = message.match(/^\/verify (0x[A-Za-z0-9]+)$/)
+
+            if (match) {
+                // the number is the first captured group
+                const theSignedMessage = match[1]
+                console.log(verificationMessage, 'the original verificationMessage')
+                console.log(theSignedMessage, 'the signed message')
+                let recoveredAddress = false
+                try {
+                    recoveredAddress = verifyMessage(verificationMessage, theSignedMessage)                    
+                } catch(e) {
+                    return await ctx.reply(`couldnt decode your signed message - please make sure its correct and try again\n\nhere comes the message for you to sign again:\n\n${verificationMessage}`, {reply_to_message_id: ctx.message.message_id})
+                }
+                if(!recoveredAddress) throw Error('couldnt recover address')
+                user.wallet.ethAddress = recoveredAddress
+                user.wallet.ethSignature = theSignedMessage
+                user.wallet.timestamp = Date.now()
+                user.isVerified = true
+                verificationMessages.delete(userId)
+                let success = await pkg.setItem(userId.toString(), user)
+                return await ctx.reply(`🚀<b>${user.first_name} is VERIFIED</b>🚀\n\n🕒<b>at time:</b> ${new Date(user.wallet.timestamp).toLocaleString()}\n\n🐾<i>YOU ARE NOW A VERIFIED BADGER!</i>🐾`, {parse_mode: 'HTML'})
+            } else {
+                return await ctx.reply(`couldnt extract the signed message you sent, please make sure its correct and try again\n\nhere comes the message for you to sign again:\n\n${verificationMessage}`)
+            }
+        }
+
+        //here we start the verification process
+        const nonce = `verify ownership for ${userId}/${user.first_name} at ${new Date(Date.now()).toLocaleString()}`
+        await verificationMessages.set(userId, nonce)
+        return await ctx.reply(`1. please go to https://etherscan.io/verifiedSignatures\n\n2. copy the message below EXACTLY and sign it with your wallet:\n\n${nonce}\n\n3. come back here and do /verify <paste signed message>`)
     },
     async checkExistingUserAndCreateNew(user) {
         const userId = user.id
